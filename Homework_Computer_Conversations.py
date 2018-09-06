@@ -1,5 +1,4 @@
 # Homework_Computer_Conversations
-# Eilidh Dunsmore
 # September 6, 2018
 # Program uses user inputs to simulate a conversation.
 
