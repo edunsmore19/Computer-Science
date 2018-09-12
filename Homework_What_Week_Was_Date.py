@@ -1,6 +1,6 @@
 ## Homework_What_Week_Was_Date
 ## September 12, 2018
-## Program tat accepts a date as an input and writes the day of the week
+## Program that accepts a date as an input and writes the day of the week
 ## on which the date falls.
 
 import sys
