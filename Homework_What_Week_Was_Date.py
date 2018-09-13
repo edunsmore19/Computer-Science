@@ -11,13 +11,13 @@ day = int(sys.argv[2])
 year = int(sys.argv[3])
 
 ## Compute date
-y = year - (14 - month)/12
+y = year - (14 - month)//12
 ##y = round(y)
-x = y + y/4 - y/100 + y/400
+x = y + int(y/4 - y/100 + y/400)
 ##x = int(x)
-m = month + 12*((14-month)/12) - 2
+m = month + int(12*((14-month)//12)) - 2
 ##m = round(m)
-d = ((day + x + (31*m)/12)) % 7
+d = ((day + x + (31*m)//12)) % 7
 ##d = round(d)
 
 ## Output
