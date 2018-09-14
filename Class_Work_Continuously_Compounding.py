@@ -7,9 +7,9 @@ import sys
 import math
 
 ## Initialize variables
-principal = float(sys.argv[1])
-rate = float(sys.argv[2])
-time = float(sys.argv[3])
+principal = eval(sys.argv[1])
+rate = eval(sys.argv[2])
+time = eval(sys.argv[3])
 moneyTotal = 0
 
 ## Compute equation
