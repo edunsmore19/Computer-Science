@@ -19,11 +19,7 @@ print("Z = ", z)
 ##print(type(x))
 
 ## Sort numbers
-if (x < y < z):
-	print("\nTrue\n")
-	offWithHerHead = 1
-
-if (x > y > z):
+if (x < y < z or x > y > z):
 	print("\nTrue\n")
 	offWithHerHead = 1
 
