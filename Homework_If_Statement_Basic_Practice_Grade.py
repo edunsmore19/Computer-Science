@@ -37,8 +37,8 @@ if (0 <= input <= 5):
 			sign = "+"
 		elif (input < 1.5):
 			sign = "-"
+	## Print grade
+	print("Your grade is:", letterGrade + sign)
+	
 else:
 	print("Number is not in range.\nUse a number from zero to five.")
-
-## Print grade
-print("Your grade is:", letterGrade + sign)
