@@ -32,11 +32,13 @@ def start():
 
 ## Character customization
 def character():
+	global characterName
 	characterName = input("\nWhat is your name?\n")
 	readBetter()
 	print("\nWelcome,",characterName + ".")
 	print("What kind of witch would you like to play as?")
 	print("You may be a 'fire witch', 'water witch', 'swamp witch', or a 'practical witch'.")
+	global witchType
 	witchType = input("Type the kind of witch you'd like to play as.\n")
 	witchType = witchType.lower()
 	if (witchType.startswith('f') + witchType.startswith('w') + witchType.startswith('s') + witchType.startswith('p') == False):
@@ -95,11 +97,13 @@ def capturedByTownspeople():
 		error()
 		capturedByTownspeople()
 
+## User makes the choice not to approach the jail, GAME OVER
 def dontApproachJail():
 	print("\n\n\n\n\n\nYou decide not to approach the jail.")
 	print("This turns out to be a mistake. Much like this vacation.")
 	capturedByTownspeople()
 
+## User chooses to approach jail
 def approachJail():
 	print("You approach the jail.")
 	print("You notice that the entrance is not locked.")
@@ -112,7 +116,7 @@ reading a bad YA novel.""")
 your holiday.""")
 	print("2) Use your powers to create some sort of diversion.")
 	print("3) Attempt to signal your wife through covert means.")
-	choice = input("Choose your action. (Type either '1', '2', or '3').")
+	choice = input("Choose your action. (Type either '1', '2', or '3').\n")
 	if (choice == "1"):
 		readBetter()
 		tryToTalkItOut()
@@ -128,6 +132,7 @@ your holiday.""")
 		readBetter()
 		approachJail()
 
+## User chooses to try and talk it out with the sheriff, GAME OVER
 def tryToTalkItOut():
 	print("You stride confidently into the jail.")
 	print("'Sheriff,' you say, 'I am a witch and it is Valentine's day.'")
@@ -148,12 +153,42 @@ def tryToTalkItOut():
 		error()
 		tryToTalkItOut()
 
+## User's powers break down
+def powers():
+	global power
+	if (witchType == "water witch"):
+		power = 1
+	elif (witchType == "fire witch"):
+		power = 2
+	elif (witchType == "swamp witch"):
+		power = 3
+	else:
+		power = 4
+
+## User chooses to use their powers to distract the sheriff
 def powersToDistract():
-	print("You, being a ______________, have more options than a mere human.") #insert variable depicting witchType
-
-	print("Using your powers, you", _____________) #insert variable for thing
+	print("You, being a, " + witchType + ", have more options than a mere human.")
+	powers()
+	if (power == 1):
+		action = """cause the sheriff’s coffee to evaporate. He attempts to take a sip,
+but becomes confused. He gets up to make some more coffee."""
+	elif (power == 2):
+		action = """cause the sheriff’s book to catch fire. He throws it away
+from himself, jumps to his feet, and attempts to stomp it out."""
+	elif (power == 3):
+		action = """cause a neglected potted fern in the corner to grow rapidly.
+The fern reaches out and taps the sheriff gently, but insistently on the shoulder.
+The sheriff, terrified, tries to strangle the fern.\nThe fern fights valiantly—and
+to the death."""
+	else:
+		action = """cause his book to become incredibly engrossing. He’s never read
+something with such vigor before."""
+	print("Using your powers, you", action)
 	print("You have successfully distracted him.")
+	readBetter()
+	successfullyDistractedTheSheriff()
 
+## The user chooses to use covert means, this redirects them to choices 1 & 2
 def covertMeans():
 	print("You cup your hands around you mouth and make a bird noise.")
 	print("The sheriff seems nonplussed.")
@@ -163,8 +198,7 @@ def covertMeans():
 	print("""1) Inform him that you are a witch & that he is, in fact, ruining 
 your holiday.""")
 	print("2) Use your powers to create some sort of diversion.")
-	choice = input("\nChoose your action. (Type either '1' or '2')")
-	choice = choice.lower()
+	choice = input("\nChoose your action. (Type either '1' or '2')\n")
 	if (choice == "1"):
 		readBetter()
 		tryToTalkItOut()
@@ -177,8 +211,103 @@ your holiday.""")
 		readBetter()
 		covertMeans()
 
+## The user has distracted the sheriff & is asked if they'd like to sneak past
 def successfullyDistractedTheSheriff():
-	pass
+	choice = input("Would like to enter the jail and sneak past? (y/n)\n")
+	choice = choice.lower()
+	if (choice == "y"):
+		readBetter()
+		sneakPast()
+	elif(choice == "n"):
+		readBetter()
+		print("The sheriff turns and sees you loitering in the entrance way!")
+		print("He signals his fellow townspeople!")
+		capturedByTownspeople()
+	else:
+		readBetter()
+		error()
+		readBetter()
+		successfullyDistractedTheSheriff()
+
+## The user sneaks past & is asked how they would like to destroy the lock
+def sneakPast():
+	print("You quietly creep past the occupied sheriff.")
+	print("You come to the cell where your, frankly, peeved wife is being held.")
+	print("She gestures (meaningfully) towards the cell lock.")
+	print("You have three options.")
+	print("1) Attempt to impress your wife and regain her favor by picking the lock.")
+	print("2) Use your powers to... well, you're not sure what. But something.")
+	print("3) Ask the distracted shreiff to open the door.")
+	choice = input("Choose your action. (Type either '1', '2', or '3').\n")
+	if (choice == "1"):
+		readBetter()
+		pickTheLock()
+	elif (choice == "2"):
+		readBetter()
+		powersToUnlock()
+	elif (choice == "3"):
+		readBetter()
+		askPolitely()
+	else:
+		readBetter()
+		error()
+		readBetter()
+		sneakPast()
+
+## The user decides to ask the sheriff politely, GAME OVER
+def askPolitely():
+	print("You spin around, and walk over to the sheriff.")
+	print("He seems just as shocked as your wife.")
+	print("'Would you mind unlocking this cell?' You ask, politely.")
+	print("\nThis does not work.")
+	print("He arrests you and signals to the townspeople.")
+	capturedByTownspeople()
+
+## The user decides to try to pick the lock, GAME OVER
+def pickTheLock():
+	print("You do not know how to pick locks.")
+	print("\nYour wife no longer remembers why she married you.")
+	print("\nThe sheriff immediately notices you and signals to the townspeople.")
+	capturedByTownspeople()
+
+## User decides to use their powers to destroy the lock
+def powersToUnlock():
+	print("You concentrate on the lock and pray for something to happen.")
+	powers()
+	if (power == 1):
+		action = """Water starts to gather on, and around the metal of the lock. 
+The lock begins to rust before your eyes--it eventually disintigrates."""
+	elif (power == 2):
+		action = """Flames errupt from your hands! The lock melts under your barrage,
+and as a bonus, your wife looks mildly impressed. You're glad you did not make a fool
+of yourself by trying to pick the lock, and instead did the cool, impressive thing."""
+	elif (power == 3):
+		action = """The metal of the lock creaks and moans. It twists itself
+unexpectedly into the shape of an oragami crane."""
+	else:
+		action = """You look down at the lock and notice that the key is still in it.
+You take a hold of it, and turn it."""
+	print(action, "You push the door gently inwards, and it creaks open.")
+	youWin()
+
+## The user wins, end screen, YOU WIN
+def youWin():
+	print("You grab your wife's hand & the two of you begin to run.")
+	print("'It's not truly a romantic getaway if one of us isn't kidnapped.' You say.")
+	print("She cracks a smile. 'Regadless,' she says, 'You're not planning our next vacation.'")
+	print("\n\n\n\n")
+	readBetter
+	print(characterName + ",", witchType + ",", "congratulations.")
+	print("\nYOU WIN!\n")
+	choice = input("\nWould you like to play again (y/n)\n")
+	choice = choice.lower()
+	if (choice == "y"):
+		start()
+	elif(choice == "n"):
+		exit()
+	else:
+		error()
+		capturedByTownspeople()
 
 ## Error message for when user types the wrong thing
 def error():
@@ -190,10 +319,3 @@ def readBetter():
 
 ## Run
 title()
-
-## Test print lines
-##print("Ready to play choice:", start.choice())
-##print("Character name choice:", characterName.character())
-##print("Type of witch choice:", witchType.character())
-##print("Did you approach the jail:", soWeFindOurSelvesAlone.choice())
-##print("READOUT COMPLETE")
