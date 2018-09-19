@@ -4,8 +4,6 @@
 ## choices that change the story.
 ## Honor Code: I have neither given nor recieved any unauthorized aid.
 
-## Initialize variables
-
 ## 'title' clears terminal & presents title
 def title():
 	print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
@@ -19,7 +17,7 @@ def start():
 	choice = choice.lower()
 	if (choice == "y"):
 		readBetter()
-		character()
+		whatIsYourName()
 	elif (choice == "n"):
 		readBetter()
 		print("\nA shame. \nGoodbye.\n")
@@ -30,26 +28,31 @@ def start():
 		readBetter()
 		start()
 
-## Character customization
-def character():
+## User's name
+def whatIsYourName():
 	global characterName
 	characterName = input("\nWhat is your name?\n")
 	readBetter()
+	character()
+
+## Character customization
+def character():
 	print("\nWelcome,",characterName + ".")
 	print("What kind of witch would you like to play as?")
-	print("You may be a 'fire witch', 'water witch', 'swamp witch', or a 'practical witch'.")
+	print("You may be a 1)'fire witch', 2)'water witch', 3)'swamp witch', or a 4)'practical witch'.")
 	global witchType
-	witchType = input("Type the kind of witch you'd like to play as.\n")
-	witchType = witchType.lower()
-	if (witchType.startswith('f') + witchType.startswith('w') + witchType.startswith('s') + witchType.startswith('p') == False):
+	witchType = input("Choose which kind of witch you'd like to play as. (1, 2, 3, or 4)\n")
+	if (witchType == "1" or witchType == "2" or witchType == "3" or witchType == "4"):
+		witchType = int(witchType)
+		readBetter()
+		print("\n\n\n\nExcellent.")
+		readBetter()
+		soWeFindOurSelvesAlone()
+	else:
+		readBetter()
 		error()
-	## Add the term 'witch' to the end of type if user didn't already add it
-	if (witchType.endswith('h') == False):
-		witchType = witchType + " witch"
-	readBetter()
-	print("\n\n\n\nExcellent.")
-	readBetter()
-	soWeFindOurSelvesAlone()
+		readBetter()
+		character()
 
 ## Begin w/ small story & first movement query
 def soWeFindOurSelvesAlone():
@@ -64,6 +67,13 @@ square, the town sheriff showed up.""")
 	print("Your wife was not so lucky.")
 	print("And so you seek to bust your wife out of jail.")
 	print("And somehow salvage your romantic vacation.")
+	## Initialize 'loveOMeter' as a global @ 40%
+	global loveOMeter
+	loveOMeter = 40
+	print("Currently, your 'Successful Valentine's Day' meter is at", loveOMeter, "%.")
+	print("Make correct choices in order to raise it.")
+	print("But beware of incorrect choices, which will lower it.")
+	print("Do your best to rescue your Valentine's day.")
 	print("\nHopes are not high.")
 	choice = input("\nWould you like to approach the jail? (y/n)\n")
 	choice = choice.lower()
@@ -86,10 +96,14 @@ def capturedByTownspeople():
 	print("You're thrown in jail.")
 	print("\nYour wife is not pleased.")
 	print("\nShe says she's never letting you plan another romantic getaway.")
+	## 'loveOMeter' presents at zero, saying you've lost
+	loveOMeter = 0
+	print("Your 'Successful Valentine's Day' meter is at", loveOMeter, "%")
 	print("\n\n\nGAME OVER")
 	choice = input("\nWould you like to play again (y/n)\n")
 	choice = choice.lower()
 	if (choice == "y"):
+		print()
 		start()
 	elif(choice == "n"):
 		exit()
@@ -142,6 +156,9 @@ def tryToTalkItOut():
 	print("You're thrown in jail.")
 	print("\nYour wife is not pleased.")
 	print("\nShe says she's never letting you plan another romantic getaway.")
+	## 'loveOMeter' presents at zero, saying you've lost
+	loveOMeter = 0
+	print("Your 'Successful Valentine's Day' meter is at", loveOMeter, "%")
 	print("\n\n\nGAME OVER")
 	choice = input("\nWould you like to play again (y/n)\n")
 	choice = choice.lower()
@@ -155,27 +172,27 @@ def tryToTalkItOut():
 
 ## User's powers break down
 def powers():
-	global power
-	if (witchType == "water witch"):
-		power = 1
-	elif (witchType == "fire witch"):
-		power = 2
-	elif (witchType == "swamp witch"):
-		power = 3
+	global witchKind
+	if (witchType == 1):
+		witchKind = "fire witch"
+	elif (witchType == 2):
+		witchKind = "water witch"
+	elif (witchType == 3):
+		witchKind = "swamp witch"
 	else:
-		power = 4
+		witchKind = "practical witch"
 
 ## User chooses to use their powers to distract the sheriff
 def powersToDistract():
-	print("You, being a, " + witchType + ", have more options than a mere human.")
 	powers()
-	if (power == 1):
+	print("You, being a, " + witchKind + ", have more options than a mere human.")
+	if (witchType == 1):
 		action = """cause the sheriff’s coffee to evaporate. He attempts to take a sip,
 but becomes confused. He gets up to make some more coffee."""
-	elif (power == 2):
+	elif (witchType == 2):
 		action = """cause the sheriff’s book to catch fire. He throws it away
 from himself, jumps to his feet, and attempts to stomp it out."""
-	elif (power == 3):
+	elif (witchType == 3):
 		action = """cause a neglected potted fern in the corner to grow rapidly.
 The fern reaches out and taps the sheriff gently, but insistently on the shoulder.
 The sheriff, terrified, tries to strangle the fern.\nThe fern fights valiantly—and
@@ -267,6 +284,7 @@ def askPolitely():
 def pickTheLock():
 	print("You do not know how to pick locks.")
 	print("\nYour wife no longer remembers why she married you.")
+	print("\nYour 'Successful Valentine's Day' meter plumets.")
 	print("\nThe sheriff immediately notices you and signals to the townspeople.")
 	capturedByTownspeople()
 
@@ -274,40 +292,67 @@ def pickTheLock():
 def powersToUnlock():
 	print("You concentrate on the lock and pray for something to happen.")
 	powers()
-	if (power == 1):
+	if (witchType == 1):
 		action = """Water starts to gather on, and around the metal of the lock. 
 The lock begins to rust before your eyes--it eventually disintigrates."""
-	elif (power == 2):
-		action = """Flames errupt from your hands! The lock melts under your barrage,
-and as a bonus, your wife looks mildly impressed. You're glad you did not make a fool
-of yourself by trying to pick the lock, and instead did the cool, impressive thing."""
-	elif (power == 3):
+	elif (witchType == 2):
+		action = "Flames errupt from your hands! The lock melts under your barrage."
+	elif (witchType == 3):
 		action = """The metal of the lock creaks and moans. It twists itself
 unexpectedly into the shape of an oragami crane."""
 	else:
 		action = """You look down at the lock and notice that the key is still in it.
 You take a hold of it, and turn it."""
 	print(action, "You push the door gently inwards, and it creaks open.")
-	youWin()
+	print("""and as a bonus, your wife looks mildly impressed. You're glad you did not make a fool
+of yourself by trying to pick the lock, and instead did the cool, impressive thing.""")
+	print(loveOMeter)
+	loveOMeter+= 25
+	print(loveOMeter)
+	print("\n(Your 'Successful Valentine's Day' meter has increased to", loveOMeter, "%)")
+	youEscape()
 
-## The user wins, end screen, YOU WIN
-def youWin():
+## The user escapes
+def youEscape():
 	print("You grab your wife's hand & the two of you begin to run.")
 	print("'It's not truly a romantic getaway if one of us isn't kidnapped.' You say.")
 	print("She cracks a smile. 'Regadless,' she says, 'You're not planning our next vacation.'")
-	print("\n\n\n\n")
-	readBetter
-	print(characterName + ",", witchType + ",", "congratulations.")
-	print("\nYOU WIN!\n")
-	choice = input("\nWould you like to play again (y/n)\n")
-	choice = choice.lower()
-	if (choice == "y"):
-		start()
-	elif(choice == "n"):
-		exit()
+	print("""\nYou run, hand in hand for the door, but unfortunetly, all of this cute dialogue
+has captured the sheriff's attention.""")
+	print("'Stop right there.' Shouts the sheriff. 'The power of Christ compells you!'")
+	print("Your wife and you exchange a glance.")
+	print("\nQuick! Say something witty!")
+	print("1) Erm...")
+	print("2) *eye roll* Isn't that vampires? Get your supernatural creatures straight.")
+	print("3) Hah! I love garlic sauce on my pasta!")
+	choice = input("Choose your action. (Type either '1', '2', or '3').\n")
+	if (choice == "1"):
+		readBetter()
+		print("Alack!\nYou could not think of anything!")
+		print("Thankfully, your blunder goes mostly unnoticed.")
+	elif (choice == "2"):
+		readBetter()
+		print("A fantastic comeback!")
+		print("Both the sheriff and your wife seem mighty impressed.")
+		loveOMeter+=10
+		print("\n(Your 'Successful Valentine's Day' meter has increased to", loveOMeter, "%)")
+	elif (choice == "3"):
+		readBetter()
+		print("You've said something that vaguely relates!")
+		print("Oh dear.")
+		loveOMeter-=10
+		print("\n(Your 'Successful Valentine's Day' meter has decreased to", loveOMeter, "%)")
 	else:
+		readBetter()
 		error()
-		capturedByTownspeople()
+		readBetter()
+		sneakPast()
+	readBetter()
+	fightTheSheriff()
+
+## User must choose how to incapacitate the sheriff
+def fightTheSheriff():	
+	print("Sheriff WHAAAA")
 
 ## Error message for when user types the wrong thing
 def error():
