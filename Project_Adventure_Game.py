@@ -4,6 +4,9 @@
 ## choices that change the story.
 ## Honor Code: I have neither given nor recieved any unauthorized aid.
 
+global loveOMeter
+loveOMeter = 40
+
 ## 'title' clears terminal & presents title
 def title():
 	print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
@@ -68,7 +71,6 @@ square, the town sheriff showed up.""")
 	print("And so you seek to bust your wife out of jail.")
 	print("And somehow salvage your romantic vacation.")
 	## Initialize 'loveOMeter' as a global @ 40%
-	global loveOMeter
 	loveOMeter = 40
 	print("Currently, your 'Successful Valentine's Day' meter is at", loveOMeter, "%.")
 	print("Make correct choices in order to raise it.")
@@ -91,7 +93,7 @@ square, the town sheriff showed up.""")
 
 ## Captured by townspeople, AKA: GAME OVER
 def capturedByTownspeople():
-	print("\nYou've attracted the attention of the townspeople!")
+	print("\nLooks like you've attracted the attention of the townspeople!")
 	print("They surround & capture you.")
 	print("You're thrown in jail.")
 	print("\nYour wife is not pleased.")
@@ -306,9 +308,8 @@ You take a hold of it, and turn it."""
 	print(action, "You push the door gently inwards, and it creaks open.")
 	print("""and as a bonus, your wife looks mildly impressed. You're glad you did not make a fool
 of yourself by trying to pick the lock, and instead did the cool, impressive thing.""")
-	print(loveOMeter)
-	loveOMeter+= 25
-	print(loveOMeter)
+	## Assign 'loveOMeter' a 25 point increase
+	loveOMeter += 65
 	print("\n(Your 'Successful Valentine's Day' meter has increased to", loveOMeter, "%)")
 	youEscape()
 
@@ -334,6 +335,7 @@ has captured the sheriff's attention.""")
 		readBetter()
 		print("A fantastic comeback!")
 		print("Both the sheriff and your wife seem mighty impressed.")
+		## Assign 'loveOMeter' a 10 point increase
 		loveOMeter+=10
 		print("\n(Your 'Successful Valentine's Day' meter has increased to", loveOMeter, "%)")
 	elif (choice == "3"):
@@ -352,7 +354,49 @@ has captured the sheriff's attention.""")
 
 ## User must choose how to incapacitate the sheriff
 def fightTheSheriff():	
-	print("Sheriff WHAAAA")
+	print("Witty repartee now aside, you must decide how to incapacitate the sheriff.")
+	print("You have three options.")
+	print("1) Convince him to let you by.")
+	print("2) Hand to hand combat.")
+	print("3) Let your wife figure it out.")
+	choice = input("Choose your action. (Type either '1', '2', or '3').\n")
+	if (choice == "1"):
+		print("The sheriff isn't too into listening.")
+		print("Before you can even open your mouth, he yells out to his fellow townspeople.")
+		capturedByTownspeople()
+	elif (choice == "2"):
+		print("You've read a lot of books that include fighty bits.")
+		print("It can't be that much different in real life... can it?")
+		print("\nIt turns out, it's not.")
+		print("You just have to be willing to hurt & get hurt back.")
+		print("\nWhile efficient, your wife does not believe in violence.")
+		## Assign 'loveOMeter' a 5 point decrease
+		loveOMeter -= 5
+		print("\n(Your 'Successful Valentine's Day' meter has decreased to", loveOMeter, "%)")
+		soNowWeFindOurselvesTogether()
+	elif (choice == "3"):
+		print("Your wife appreciates you letting her have the narrative spotlight for once.")
+		print("You watch her eyes flash bright blue, and she makes a sharp cutting motion with her arm.")
+		print("The sheriff collapses, in a sudden deep slumber.")
+		## Assign 'loveOMeter' a 10 point increase
+		loveOMeter += 10
+		print("\n(Your 'Successful Valentine's Day' meter has increased to", loveOMeter, "%)")
+		soNowWeFindOurselvesTogether()
+	else:
+		readBetter()
+		error()
+		readBetter()
+		fightTheSheriff()
+	readBetter()
+
+## User must now choose an action in the town square
+def soNowWeFindOurselvesTogether
+	print("Your wife and you emerge from the town jail.")
+	print("You can see the townspeople gathering flamable material in the distance.")
+	print("You look around for some sort of getaway method.")
+	print("1) An old jalopy practically rusted to the sidewalk.")
+	print("2) A pair of broomsticks rested haphazardly against the side of a building.")
+	print("3) A firey stallion tied to a post, munching out of a feedbag.")
 
 ## Error message for when user types the wrong thing
 def error():
