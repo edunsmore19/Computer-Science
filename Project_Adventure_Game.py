@@ -390,13 +390,75 @@ def fightTheSheriff():
 	readBetter()
 
 ## User must now choose an action in the town square
-def soNowWeFindOurselvesTogether
+def soNowWeFindOurselvesTogether():
 	print("Your wife and you emerge from the town jail.")
 	print("You can see the townspeople gathering flamable material in the distance.")
 	print("You look around for some sort of getaway method.")
 	print("1) An old jalopy practically rusted to the sidewalk.")
 	print("2) A pair of broomsticks rested haphazardly against the side of a building.")
 	print("3) A firey stallion tied to a post, munching out of a feedbag.")
+	choice = input("Choose your action. (Type either '1', '2', or '3').\n")
+	if (choice == "1"):
+		print("Your wife glares at the rustbucket-death-trap before reluctantly climbing inside.")
+		print("""You try to think of a cool joke about how old the car is and how great your
+Valentine's Day is going, but you come up blank.""")
+		## Assign 'loveOMeter' a 15 point decrease for style
+		loveOMeter -= 15
+		print("\n(Your 'Successful Valentine's Day' meter has decreased to", loveOMeter, "%)")
+		print("""\nHowever, by some miracle the old thing has both the keys in the ignition and
+manages to cough and hack its way into life.""")
+		print("It crawls slowly away from the town.")
+		print("'It's been one helluva day.' You say.")
+		print("Your wife agrees.")
+		print("\nShe also insists that you do not plan your next vacation.")
+		youwin()
+	elif (choice == "2"):
+		print("Choice 2")
+	elif (choice == "3"):
+		print("Choice 3")
+	else:
+		readBetter()
+		error()
+		readBetter()
+		soNowWeFindOurselvesTogether()
+	readBetter()
+
+## User reacher the end of the game, YOU WIN
+def youWin():
+	print("\n\n\n\n")
+	readBetter
+	print(characterName + ",", witchKind + ",", "congratulations.")
+	print("\nYOU WIN!\n")
+	print("\n(Your 'Successful Valentine's Day' meter is at", loveOMeter, "%")
+	if (loveOMeter == 100):
+		choice = input("\nWould you like to play again (y/n)\n")
+		choice = choice.lower()
+		if (choice == "y"):
+			readBetter()
+			start()
+		elif(choice == "n"):
+			readBetter()
+			exit()
+		else:
+			readBetter()
+			error()
+			readBetter()
+			youWin()
+	else:
+		choice = input("""\nWould you like to play again to try and fill your 'Successful
+Valentine's Day' meter all the way to the top? (y/n)\n""")
+		choice = choice.lower()
+		if (choice == "y"):
+			readBetter()
+			start()
+		elif(choice == "n"):
+			readBetter()
+			exit()
+		else:
+			readBetter()
+			error()
+			readBetter()
+			youWin()
 
 ## Error message for when user types the wrong thing
 def error():
