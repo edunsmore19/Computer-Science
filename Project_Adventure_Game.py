@@ -413,9 +413,23 @@ manages to cough and hack its way into life.""")
 		print("\nShe also insists that you do not plan your next vacation.")
 		youwin()
 	elif (choice == "2"):
-		print("Choice 2")
+		print("The broomstick thing is a harmful stereotype.")
+		print("\nAlso, brooms cannot fly, or move in any sort of way unassisted.")
+		print("Your wife and you get into a loud argument.")
+		readBetter()
+		capturedByTownspeople()
 	elif (choice == "3"):
-		print("Choice 3")
+		print("Salutations for style, your wife looks mad impressed.")
+		## Assign 'loveOMeter' a 15 point increase for style
+		loveOMeter += 15
+		print("\n(Your 'Successful Valentine's Day' meter has increased to", loveOMeter, "%)")
+		print("\n'Did you plan this??' She asks.")
+		print("'Oh yes.' You absolutely lie and then thank whatever higher powers are out there.")
+		print("""\nYou help your wife onto the horse (who seems a bit surprised, but not upset at
+this new development in its life, and besides, he's a fan of witches).""")
+		print("You untie the horse from the post, and climb on yourself.")
+		print("You ride happily ever after into the sunset.")
+		youWin()
 	else:
 		readBetter()
 		error()
