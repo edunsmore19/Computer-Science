@@ -4,9 +4,6 @@
 ## choices that change the story.
 ## Honor Code: I have neither given nor recieved any unauthorized aid.
 
-global loveOMeter
-loveOMeter = 40
-
 ## 'title' clears terminal & presents title
 def title():
 	print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
@@ -71,6 +68,7 @@ square, the town sheriff showed up.""")
 	print("And so you seek to bust your wife out of jail.")
 	print("And somehow salvage your romantic vacation.")
 	## Initialize 'loveOMeter' as a global @ 40%
+	global loveOMeter
 	loveOMeter = 40
 	print("Currently, your 'Successful Valentine's Day' meter is at", loveOMeter, "%.")
 	print("Make correct choices in order to raise it.")
@@ -99,6 +97,7 @@ def capturedByTownspeople():
 	print("\nYour wife is not pleased.")
 	print("\nShe says she's never letting you plan another romantic getaway.")
 	## 'loveOMeter' presents at zero, saying you've lost
+	global loveOMeter
 	loveOMeter = 0
 	print("Your 'Successful Valentine's Day' meter is at", loveOMeter, "%")
 	print("\n\n\nGAME OVER")
@@ -159,6 +158,7 @@ def tryToTalkItOut():
 	print("\nYour wife is not pleased.")
 	print("\nShe says she's never letting you plan another romantic getaway.")
 	## 'loveOMeter' presents at zero, saying you've lost
+	global loveOMeter
 	loveOMeter = 0
 	print("Your 'Successful Valentine's Day' meter is at", loveOMeter, "%")
 	print("\n\n\nGAME OVER")
@@ -309,8 +309,10 @@ You take a hold of it, and turn it."""
 	print("""and as a bonus, your wife looks mildly impressed. You're glad you did not make a fool
 of yourself by trying to pick the lock, and instead did the cool, impressive thing.""")
 	## Assign 'loveOMeter' a 25 point increase
-	loveOMeter += 65
-	print("\n(Your 'Successful Valentine's Day' meter has increased to", loveOMeter, "%)")
+	global loveOMeter
+	loveOMeter += 25
+	print("\n(Your 'Successful Valentine's Day' meter has increased to", loveOMeter, "%)\n")
+	readBetter()
 	youEscape()
 
 ## The user escapes
@@ -336,12 +338,15 @@ has captured the sheriff's attention.""")
 		print("A fantastic comeback!")
 		print("Both the sheriff and your wife seem mighty impressed.")
 		## Assign 'loveOMeter' a 10 point increase
+		## Remind program that we are using a global variable in this function
+		global loveOMeter
 		loveOMeter+=10
 		print("\n(Your 'Successful Valentine's Day' meter has increased to", loveOMeter, "%)")
 	elif (choice == "3"):
 		readBetter()
-		print("You've said something that vaguely relates!")
+		print("You've said something that vaguely relates, but in the worst possible way!")
 		print("Oh dear.")
+		## Assign 'loveOMeter' a 10 point decrease
 		loveOMeter-=10
 		print("\n(Your 'Successful Valentine's Day' meter has decreased to", loveOMeter, "%)")
 	else:
@@ -360,6 +365,7 @@ def fightTheSheriff():
 	print("2) Hand to hand combat.")
 	print("3) Let your wife figure it out.")
 	choice = input("Choose your action. (Type either '1', '2', or '3').\n")
+	readBetter()
 	if (choice == "1"):
 		print("The sheriff isn't too into listening.")
 		print("Before you can even open your mouth, he yells out to his fellow townspeople.")
@@ -371,13 +377,15 @@ def fightTheSheriff():
 		print("You just have to be willing to hurt & get hurt back.")
 		print("\nWhile efficient, your wife does not believe in violence.")
 		## Assign 'loveOMeter' a 5 point decrease
+		## Remind program that we are using a global variable in this function
+		global loveOMeter
 		loveOMeter -= 5
 		print("\n(Your 'Successful Valentine's Day' meter has decreased to", loveOMeter, "%)")
 		soNowWeFindOurselvesTogether()
 	elif (choice == "3"):
 		print("Your wife appreciates you letting her have the narrative spotlight for once.")
 		print("You watch her eyes flash bright blue, and she makes a sharp cutting motion with her arm.")
-		print("The sheriff collapses, in a sudden deep slumber.")
+		print("The sheriff collapses in a sudden deep slumber.")
 		## Assign 'loveOMeter' a 10 point increase
 		loveOMeter += 10
 		print("\n(Your 'Successful Valentine's Day' meter has increased to", loveOMeter, "%)")
@@ -391,27 +399,31 @@ def fightTheSheriff():
 
 ## User must now choose an action in the town square
 def soNowWeFindOurselvesTogether():
+	readBetter()
 	print("Your wife and you emerge from the town jail.")
-	print("You can see the townspeople gathering flamable material in the distance.")
+	print("You can see the townspeople gathering flamable material in the distance.\n")
 	print("You look around for some sort of getaway method.")
 	print("1) An old jalopy practically rusted to the sidewalk.")
 	print("2) A pair of broomsticks rested haphazardly against the side of a building.")
 	print("3) A firey stallion tied to a post, munching out of a feedbag.")
 	choice = input("Choose your action. (Type either '1', '2', or '3').\n")
+	readBetter()
 	if (choice == "1"):
 		print("Your wife glares at the rustbucket-death-trap before reluctantly climbing inside.")
 		print("""You try to think of a cool joke about how old the car is and how great your
 Valentine's Day is going, but you come up blank.""")
 		## Assign 'loveOMeter' a 15 point decrease for style
+		## Remind program that we are using a global variable in this function
+		global loveOMeter
 		loveOMeter -= 15
 		print("\n(Your 'Successful Valentine's Day' meter has decreased to", loveOMeter, "%)")
-		print("""\nHowever, by some miracle the old thing has both the keys in the ignition and
+		print("""\nHowever, by some miracle the old thing has the key in the ignition and
 manages to cough and hack its way into life.""")
 		print("It crawls slowly away from the town.")
 		print("'It's been one helluva day.' You say.")
 		print("Your wife agrees.")
 		print("\nShe also insists that you do not plan your next vacation.")
-		youwin()
+		youWin()
 	elif (choice == "2"):
 		print("The broomstick thing is a harmful stereotype.")
 		print("\nAlso, brooms cannot fly, or move in any sort of way unassisted.")
@@ -420,6 +432,8 @@ manages to cough and hack its way into life.""")
 		capturedByTownspeople()
 	elif (choice == "3"):
 		print("Salutations for style, your wife looks mad impressed.")
+		print("""She loves horses--even more so when they're your mode of escape from terrible
+villagers seeking to burn you at the stake.""")
 		## Assign 'loveOMeter' a 15 point increase for style
 		loveOMeter += 15
 		print("\n(Your 'Successful Valentine's Day' meter has increased to", loveOMeter, "%)")
@@ -427,7 +441,7 @@ manages to cough and hack its way into life.""")
 		print("'Oh yes.' You absolutely lie and then thank whatever higher powers are out there.")
 		print("""\nYou help your wife onto the horse (who seems a bit surprised, but not upset at
 this new development in its life, and besides, he's a fan of witches).""")
-		print("You untie the horse from the post, and climb on yourself.")
+		print("You untie the horse from the post, unclip the feed bag, and then climb on yourself.")
 		print("You ride happily ever after into the sunset.")
 		youWin()
 	else:
@@ -439,8 +453,8 @@ this new development in its life, and besides, he's a fan of witches).""")
 
 ## User reacher the end of the game, YOU WIN
 def youWin():
+	readBetter()
 	print("\n\n\n\n")
-	readBetter
 	print(characterName + ",", witchKind + ",", "congratulations.")
 	print("\nYOU WIN!\n")
 	print("\n(Your 'Successful Valentine's Day' meter is at", loveOMeter, "%")
