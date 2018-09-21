@@ -23,9 +23,7 @@ def start():
 		print("\nA shame. \nGoodbye.\n")
 		exit()
 	else:
-		readBetter()
 		error()
-		readBetter()
 		start()
 
 ## User's name
@@ -49,9 +47,7 @@ def character():
 		readBetter()
 		soWeFindOurSelvesAlone()
 	else:
-		readBetter()
 		error()
-		readBetter()
 		character()
 
 ## Begin w/ small story & first movement query
@@ -84,9 +80,7 @@ square, the town sheriff showed up.""")
 		readBetter()
 		dontApproachJail();
 	else:
-		readBetter()
 		error()
-		readBetter()
 		soWeFindOurSelvesAlone()
 
 ## Captured by townspeople, AKA: GAME OVER
@@ -142,9 +136,7 @@ your holiday.""")
 		readBetter()
 		covertMeans()
 	else:
-		readBetter()
 		error()
-		readBetter()
 		approachJail()
 
 ## User chooses to try and talk it out with the sheriff, GAME OVER
@@ -225,9 +217,7 @@ your holiday.""")
 		readBetter()
 		powersToDistract()
 	else:
-		readBetter()
 		error()
-		readBetter()
 		covertMeans()
 
 ## The user has distracted the sheriff & is asked if they'd like to sneak past
@@ -243,9 +233,7 @@ def successfullyDistractedTheSheriff():
 		print("He signals his fellow townspeople!")
 		capturedByTownspeople()
 	else:
-		readBetter()
 		error()
-		readBetter()
 		successfullyDistractedTheSheriff()
 
 ## The user sneaks past & is asked how they would like to destroy the lock
@@ -268,9 +256,7 @@ def sneakPast():
 		readBetter()
 		askPolitely()
 	else:
-		readBetter()
 		error()
-		readBetter()
 		sneakPast()
 
 ## The user decides to ask the sheriff politely, GAME OVER
@@ -320,7 +306,7 @@ def youEscape():
 	print("You grab your wife's hand & the two of you begin to run.")
 	print("'It's not truly a romantic getaway if one of us isn't kidnapped.' You say.")
 	print("She cracks a smile. 'Regadless,' she says, 'You're not planning our next vacation.'")
-	print("""\nYou run, hand in hand for the door, but unfortunetly, all of this cute dialogue
+	print("""\nYou run, hand in hand, for the door--but unfortunetly, all of this cute dialogue
 has captured the sheriff's attention.""")
 	print("'Stop right there.' Shouts the sheriff. 'The power of Christ compells you!'")
 	print("Your wife and you exchange a glance.")
@@ -350,10 +336,8 @@ has captured the sheriff's attention.""")
 		loveOMeter-=10
 		print("\n(Your 'Successful Valentine's Day' meter has decreased to", loveOMeter, "%)")
 	else:
-		readBetter()
 		error()
-		readBetter()
-		sneakPast()
+		youEscape()
 	readBetter()
 	fightTheSheriff()
 
@@ -365,24 +349,28 @@ def fightTheSheriff():
 	print("2) Hand to hand combat.")
 	print("3) Let your wife figure it out.")
 	choice = input("Choose your action. (Type either '1', '2', or '3').\n")
-	readBetter()
 	if (choice == "1"):
+		readBetter()
 		print("The sheriff isn't too into listening.")
 		print("Before you can even open your mouth, he yells out to his fellow townspeople.")
 		capturedByTownspeople()
 	elif (choice == "2"):
+		readBetter()
 		print("You've read a lot of books that include fighty bits.")
 		print("It can't be that much different in real life... can it?")
 		print("\nIt turns out, it's not.")
 		print("You just have to be willing to hurt & get hurt back.")
 		print("\nWhile efficient, your wife does not believe in violence.")
+		print("\nEspecially not while she's on holiday.")
 		## Assign 'loveOMeter' a 5 point decrease
 		## Remind program that we are using a global variable in this function
 		global loveOMeter
 		loveOMeter -= 5
 		print("\n(Your 'Successful Valentine's Day' meter has decreased to", loveOMeter, "%)")
+		readBetter()
 		soNowWeFindOurselvesTogether()
 	elif (choice == "3"):
+		readBetter()
 		print("Your wife appreciates you letting her have the narrative spotlight for once.")
 		print("You watch her eyes flash bright blue, and she makes a sharp cutting motion with her arm.")
 		print("The sheriff collapses in a sudden deep slumber.")
@@ -391,15 +379,12 @@ def fightTheSheriff():
 		print("\n(Your 'Successful Valentine's Day' meter has increased to", loveOMeter, "%)")
 		soNowWeFindOurselvesTogether()
 	else:
-		readBetter()
 		error()
-		readBetter()
 		fightTheSheriff()
 	readBetter()
 
 ## User must now choose an action in the town square
 def soNowWeFindOurselvesTogether():
-	readBetter()
 	print("Your wife and you emerge from the town jail.")
 	print("You can see the townspeople gathering flamable material in the distance.\n")
 	print("You look around for some sort of getaway method.")
@@ -445,9 +430,7 @@ this new development in its life, and besides, he's a fan of witches).""")
 		print("You ride happily ever after into the sunset.")
 		youWin()
 	else:
-		readBetter()
 		error()
-		readBetter()
 		soNowWeFindOurselvesTogether()
 	readBetter()
 
@@ -468,9 +451,7 @@ def youWin():
 			readBetter()
 			exit()
 		else:
-			readBetter()
 			error()
-			readBetter()
 			youWin()
 	else:
 		choice = input("""\nWould you like to play again to try and fill your 'Successful
@@ -483,14 +464,14 @@ Valentine's Day' meter all the way to the top? (y/n)\n""")
 			readBetter()
 			exit()
 		else:
-			readBetter()
 			error()
-			readBetter()
 			youWin()
 
 ## Error message for when user types the wrong thing
 def error():
+	readBetter()
 	print("\nDo what you're told. \nTry again with the proper command.\n")
+	readBetter()
 
 ## Big line to help user read
 def readBetter():
