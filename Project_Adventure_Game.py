@@ -306,7 +306,7 @@ def youEscape():
 	print("You grab your wife's hand & the two of you begin to run.")
 	print("'It's not truly a romantic getaway if one of us isn't kidnapped.' You say.")
 	print("She cracks a smile. 'Regadless,' she says, 'You're not planning our next vacation.'")
-	print("""\nYou run, hand in hand, for the door--but unfortunetly, all of this cute dialogue
+	print("""\nYou run, hand in hand, for the door--but unfortunately, all of this cute dialogue
 has captured the sheriff's attention.""")
 	print("'Stop right there.' Shouts the sheriff. 'The power of Christ compells you!'")
 	print("Your wife and you exchange a glance.")
@@ -385,6 +385,7 @@ def fightTheSheriff():
 
 ## User must now choose an action in the town square
 def soNowWeFindOurselvesTogether():
+	readBetter()
 	print("Your wife and you emerge from the town jail.")
 	print("You can see the townspeople gathering flamable material in the distance.\n")
 	print("You look around for some sort of getaway method.")
