@@ -2,7 +2,8 @@
 ## September 27, 2018
 ## Generate 30 numbers from 1 to 30, randomly (?) and then print
 ## only the values that the digit sum equals 5.
-## Sources:
+## Sources: did some research on adding integers from two
+## different lists
 
 import random
 
@@ -27,11 +28,17 @@ for listPosition in range(len(firstList)):
 	secondList[listPosition] = int(secondList[listPosition])
 
 ## Add together & put back in original finalList
-##for listPosition in range(len(firstList)):
-finalList += firstList[listPosition] + secondList[listPosition]
+for listPosition in range(len(firstList)):
+	finalList = [sum(i) for i in zip(firstList, secondList)]
+	print(finalList)
+
+## Check for it equaling 5
+for listPosition in range(len(finalList)):
+	if (finalList[listPosition] == 5):
+		print(list[listPosition])
 
 ## Add 5 to the list, bc it equals 5
-finalList.append(5)
+list.append(5)
 
 ## Test print
 print(finalList)
