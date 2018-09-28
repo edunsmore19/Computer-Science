@@ -19,5 +19,10 @@ for listPosition in range(len(list)):
 	list[listPosition] = str(list[listPosition])
 	list[listPosition] = (list[listPosition][0])
 
+## Convert back to int & sort
+for listPosition in range(len(list)):
+	list[listPosition] = int(list[listPosition])
+list.sort()
+
 ## Final print
 print(list)
