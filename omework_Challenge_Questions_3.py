@@ -11,6 +11,7 @@ list = []
 firstList = []
 secondList = []
 finalList = []
+stringList = []
 
 ## Generate the 30 random numbers 1-30
 for x in range(29):
@@ -30,15 +31,13 @@ for listPosition in range(len(firstList)):
 ## Add together & put back in original finalList
 for listPosition in range(len(firstList)):
 	finalList = [sum(i) for i in zip(firstList, secondList)]
-	print(finalList)
 
 ## Check for it equaling 5
 for listPosition in range(len(finalList)):
 	if (finalList[listPosition] == 5):
-		print(list[listPosition])
-
-## Add 5 to the list, bc it equals 5
-list.append(5)
+		## add two strings together to equal string list
+		stringList = [str(firstList[listPosition]) + str(secondList[listPosition]) for listPosition in range(len(firstList))]
+		print(stringList[listPosition])
 
 ## Test print
-print(finalList)
+print(5)
