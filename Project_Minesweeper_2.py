@@ -15,7 +15,8 @@ global height
 height = int(sys.argv[2])
 bombs = int(sys.argv[3])
 
-board = []
+board = [[0]*width for x in range(height)]
+gameBoard = [[0]*width for x in range(height)]
 bombLocation = []
 
 ## Welcome user, explain game
@@ -23,16 +24,13 @@ def title():
 	print("\n\nWelcome to MineSweeper!")
 	print("To select a tile, enter the row and collumn number.")
 	print("Here is your board.\n\n")
-	blankBoard()
+	printGameBoard()
 
 ## Generates & prints game board
-def blankBoard():
-	## Get board
-	board = [[0]*width for x in range(height)]
-
+def printGameBoard():
 	## Print blank board
 	for x in range(height):
-		print(*board[x])
+		print(*gameBoard[x])
 	print()
 	realBoard()
 
@@ -79,11 +77,117 @@ def realBoard():
 			if (board[rToL+1][uToD+1] != "*"):
 				board[rToL+1][uToD+1] += 1
 	printFinalBoard()
+	firstClear()
 
+## Command that prompts the user to pick their first tile & clear it
+def firstClear():
+	print("Type the row and then collumn of the tile you would like to begin with.")
+	print("It will clear all of the blank tiles around it and reveal the numbers.")
+	print("Collumns and rows begin at zero.")
+
+	## Row choice
+	while True:
+		try:
+			global row
+			row = int(input("Type your row choice:\n"))
+			break
+		except ValueError:
+			error()
+			firstClear()
+			firstOverWrite()
+	if (0 <= row <= width-1):
+		print("Row:", row,"\n")
+	else:
+		error()
+		firstClear()
+
+	## Collumn choice
+	while True:
+		try:
+			global collumn
+			collumn = int(input("Type your collumn choice:\n"))
+			break
+		except ValueError:
+			error()
+			firstClear()
+			firstOverWrite()
+	if (0 <= collumn <= height-1):
+		print("Collumn:", collumn, "\n")
+		firstOverWrite()
+	else:
+		error()
+		firstClear()
+
+		#------------------------------------
+
+## Comand that prompts the user to either flag or clear a space
+def flagOrClear():
+	print("Type the row and then collumn of the tile you would like to either clear or flag.")
+	print("Collumns and rows begin at zero.")
+
+	## Row choice
+	while True:
+		try:
+			row = int(input("Type your row choice:\n"))
+			break
+		except ValueError:
+			error()
+			flagOrClear()
+	if (0 <= row <= width-1):
+		print("Row:", row)
+	else:
+		error()
+		flagOrClear()
+
+	## Collumn choice
+	while True:
+		try:
+			collumn = int(input("Type your collumn choice:\n"))
+			break
+		except ValueError:
+			error()
+			flagOrClear()
+	if (0 <= collumn <= height-1):
+		print("Collumn:", collumn)
+	else:
+		error()
+		flagOrClear()
+
+	## Choose to flag or clear space
+	print("You have chosen row:", row, "and collumn:", collumn)
+	choice = input("Would you like to flag or clear that tile?\nType 'f' or 'c'\n")
+	choice = choice.lower()
+	if (choice == "f"):
+		print("You've chosed to flag", row, ",", collumn)
+	elif (choice == "c"):
+		print("You've chosen to clear", row, ",", collumn)
+	else:
+		error()
+		flagOrClear()
+
+## Command to overwrite blankBoard to present 
+def firstOverWrite():
+	gameBoard[row][collumn] = "."
+
+	## Print user's game board
+	for x in range(height):
+		print(*gameBoard[x])
+
+
+## Command to print the final board when player loses/wins
 def printFinalBoard():
 	## Print board with bombs and numbers
 	for x in range(height):
 		print(*board[x])
+
+## Error message
+def error():
+	print("\nBamboozled again!")
+	print("Looks like you didn't input a valid character.")
+	print("When selecting a row, you may choose between 0 and", width-1)
+	print("When selecting a collumn, you may choose between 0 and", height-1)
+	print("When choosing whether to flag or clear a tile, you may choose between 'f' and 'c'.")
+	print("Now you'll have to start all over again.\n")
 
 ## Run
 title()
