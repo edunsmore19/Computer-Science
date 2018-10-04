@@ -76,49 +76,7 @@ def realBoard():
 		if (rToL != (height-1)) and (uToD != (width-1)):
 			if (board[rToL+1][uToD+1] != "*"):
 				board[rToL+1][uToD+1] += 1
-	printFinalBoard()
-	firstClear()
-
-## Command that prompts the user to pick their first tile & clear it
-def firstClear():
-	print("Type the row and then collumn of the tile you would like to begin with.")
-	print("It will clear all of the blank tiles around it and reveal the numbers.")
-	print("Collumns and rows begin at zero.")
-
-	## Row choice
-	while True:
-		try:
-			global row
-			row = int(input("Type your row choice:\n"))
-			break
-		except ValueError:
-			error()
-			firstClear()
-			firstOverWrite()
-	if (0 <= row <= width-1):
-		print("Row:", row,"\n")
-	else:
-		error()
-		firstClear()
-
-	## Collumn choice
-	while True:
-		try:
-			global collumn
-			collumn = int(input("Type your collumn choice:\n"))
-			break
-		except ValueError:
-			error()
-			firstClear()
-			firstOverWrite()
-	if (0 <= collumn <= height-1):
-		print("Collumn:", collumn, "\n")
-		firstOverWrite()
-	else:
-		error()
-		firstClear()
-
-		#------------------------------------
+	flagOrClear()
 
 ## Comand that prompts the user to either flag or clear a space
 def flagOrClear():
@@ -128,6 +86,7 @@ def flagOrClear():
 	## Row choice
 	while True:
 		try:
+			global row
 			row = int(input("Type your row choice:\n"))
 			break
 		except ValueError:
@@ -142,6 +101,7 @@ def flagOrClear():
 	## Collumn choice
 	while True:
 		try:
+			global collumn
 			collumn = int(input("Type your collumn choice:\n"))
 			break
 		except ValueError:
@@ -157,21 +117,40 @@ def flagOrClear():
 	print("You have chosen row:", row, "and collumn:", collumn)
 	choice = input("Would you like to flag or clear that tile?\nType 'f' or 'c'\n")
 	choice = choice.lower()
-	if (choice == "f"):
+	if (choice == "f") and ((gameBoard[row][collumn] == 0) or (gameBoard[row][collumn] == "F")):
 		print("You've chosed to flag", row, ",", collumn)
-	elif (choice == "c"):
+		gameBoard[row][collumn] = "F"
+		printGameBoard()
+	elif (choice == "c") and ((gameBoard[row][collumn] == 0) or (gameBoard[row][collumn] == "F")):
 		print("You've chosen to clear", row, ",", collumn)
+		play()
 	else:
 		error()
 		flagOrClear()
 
-## Command to overwrite blankBoard to present 
-def firstOverWrite():
-	gameBoard[row][collumn] = "."
+## Command to overwrite gameBoard to reflect 
+def play():
+	## If player chooses/hits a mine
+	if (board[row][collumn] == "*"):
+		print("\n\nYou've hit a mine!")
+		print("GAME OVER")
+		printFinalBoard()
+	else:
+		print("You have made it to the Stage.")
+		## Checks for all blank adjacent tiles
+		## Overwrites them as as '.'
+		## Checks for the bump numbers on board and overwrites their matches on gameBoard
+		## Checks to see if there are any blank tiles left, if not, YOU WIN
 
 	## Print user's game board
 	for x in range(height):
 		print(*gameBoard[x])
+	print()
+
+	printFinalBoard()
+	print()
+	## Redirect to choose tile
+	flagOrClear()
 
 
 ## Command to print the final board when player loses/wins
