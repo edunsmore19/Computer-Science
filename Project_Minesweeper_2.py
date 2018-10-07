@@ -121,7 +121,7 @@ def flagOrClear():
 		print("You've chosed to flag", row, ",", collumn)
 		gameBoard[row][collumn] = "F"
 		printGameBoard()
-	elif (choice == "c") and ((gameBoard[row][collumn] == 0) or (gameBoard[row][collumn] == "F")):
+	elif (choice == "c") and ((gameBoard[row][collumn] != "*") or (gameBoard[row][collumn] == "F")):
 		print("You've chosen to clear", row, ",", collumn)
 		play()
 	else:
@@ -133,24 +133,67 @@ def play():
 	## If player chooses/hits a mine
 	if (board[row][collumn] == "*"):
 		print("\n\nYou've hit a mine!")
-		print("GAME OVER")
+		print("GAME OVER\n")
 		printFinalBoard()
 	else:
-		print("You have made it to the Stage.")
+		## Checks for 0 tiles and overwrites them as '.'
+		if (board == 0):
+			gameBoard[row][collumn] = "."
+		## Checks for numbered tiles and presents them on user's board
+		else:
+			gameBoard[row][collumn] = board[row][collumn]
+		## Below chosen tile check
+		for x in range(width-row):
+			if (board[row+x][collumn] == 0):
+				gameBoard[row+x][collumn] = "!"
+				## Check to the right
+				for y in range(height-collumn):
+					print("PRESENT")
+					if (board[row][collumn+y] == 0):
+						print("moisturize me")
+						gameBoard[row][collumn+y] = "@"
+					else:
+						print("im about to break")
+						gameBoard[row][collumn+y] = board[row][collumn+y]
+						break
+			else:
+				gameBoard[row+x][collumn] = board[row+x][collumn]
+				break
+		## Above chosen tile check
+		for x in range((0-row)*(-1)+1):
+			if (board[row-x][collumn] == 0):
+				gameBoard[row-x][collumn] = "&"
+			else:
+				gameBoard[row-x][collumn] = board[row-x][collumn]
+				break
+		## Right side chosen tile check
+		#for x in range(height-collumn):
+		#	if (board[row][collumn+x] == 0):
+		#		gameBoard[row][collumn+x] = "@"
+		#	else:
+		#		gameBoard[row][collumn+x] = board[row][collumn+x]
+		#		break
+		## Left side chosen tile check
+		## Right upper corner chosen tile check
+		## Right lower corner chosen tile check
+		## Left upper corner chosen tile check
+		## Left lower corner chosen tile check
+
+
 		## Checks for all blank adjacent tiles
 		## Overwrites them as as '.'
 		## Checks for the bump numbers on board and overwrites their matches on gameBoard
 		## Checks to see if there are any blank tiles left, if not, YOU WIN
 
-	## Print user's game board
-	for x in range(height):
-		print(*gameBoard[x])
-	print()
+		## Print user's game board
+		for x in range(height):
+			print(*gameBoard[x])
+		print()
 
-	printFinalBoard()
-	print()
-	## Redirect to choose tile
-	flagOrClear()
+		printFinalBoard()
+		print()
+		## Redirect to choose tile
+		flagOrClear()
 
 
 ## Command to print the final board when player loses/wins
