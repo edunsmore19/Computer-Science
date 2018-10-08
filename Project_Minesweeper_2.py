@@ -19,6 +19,7 @@ board = [[0]*width for x in range(height)]
 gameBoard = [[0]*width for x in range(height)]
 bombLocation = []
 conquerAndKill = []
+fauxBoard = []
 
 ## Welcome user, explain game
 def title():
@@ -77,6 +78,11 @@ def realBoard():
 		if (rToL != (height-1)) and (uToD != (width-1)):
 			if (board[rToL+1][uToD+1] != "*"):
 				board[rToL+1][uToD+1] += 1
+	## TEMPORARY CODE THAT PRINTS A TEMP BOARD!!!!!!!!!!!!!
+	for x in range(height):
+		print(*board[x])
+	print()
+	## TEMPORARY CODE ENDS
 	flagOrClear()
 
 ## Comand that prompts the user to either flag or clear a space
@@ -129,7 +135,7 @@ def flagOrClear():
 		error()
 		flagOrClear()
 
-## Command to overwrite gameBoard to reflect 
+## Command to overwrite gameBoard to reflect the users' choices
 def play():
 	## If player chooses/hits a mine
 	if (board[row][collumn] == "*"):
@@ -186,6 +192,8 @@ def zeroFilter():
 			print("I've just added spot:", row, (collumn-1), "to the kill list.")
 			gameBoard[row][collumn-1] = "."
 			print("I've just made this questionable tile", row, (collumn-1), "a '.'")
+		elif (gameBoard[row][collumn-1] == "."):
+			print("You've already guess this tile.")
 		else: 
 			gameBoard[row][collumn-1] = board[row][collumn-1]
 			print("This questionable tile is a number. I've just added it.")
@@ -197,6 +205,8 @@ def zeroFilter():
 			print("I've just added spot:", row, (collumn+1), "to the kill list.")
 			gameBoard[row][collumn+1] = "."
 			print("I've just made this questionable tile", row, (collumn+1), "a '.'")
+		elif (gameBoard[row][collumn+1] == "."):
+			print("You've already guess this tile.")
 		else:
 			gameBoard[row][collumn+1] = board[row][collumn+1]
 			print("This questionable tile is a number. I've just added it.")
@@ -209,6 +219,8 @@ def zeroFilter():
 			print("I've just added spot:", (row-1), collumn, "to the kill list.")
 			gameBoard[row-1][collumn] = "."
 			print("I've just made this questionable tile", (row-1), collumn, "a '.'")
+		elif (gameBoard[row-1][collumn] == "."):
+			print("You've already guess this tile.")
 		else: 
 			gameBoard[row-1][collumn] = board[row-1][collumn]
 			print("This questionable tile is a number. I've just added it.")
@@ -220,6 +232,8 @@ def zeroFilter():
 			print("I've just added spot:", (row+1), collumn, "to the kill list.")
 			gameBoard[row+1][collumn] = "."
 			print("I've just made this questionable tile", (row+1), collumn, "a '.'")
+		elif (gameBoard[row+1][collumn] == "."):
+			print("You've already guess this tile.")
 		else:
 			gameBoard[row+1][collumn] = board[row+1][collumn]
 			print("This questionable tile is a number. I've just added it.")
@@ -232,6 +246,8 @@ def zeroFilter():
 			print("I've just added spot:", (row-1), (collumn-1), "to the kill list.")
 			gameBoard[row-1][collumn-1] = "."
 			print("I've just made this questionable tile", (row-1), (collumn-1), "a '.'")
+		elif (gameBoard[row-1][collumn-1] == "."):
+			print("You've already guess this tile.")
 		else:
 			gameBoard[row-1][collumn-1] = board[row-1][collumn-1]
 			print("This questionable tile is a number. I've just added it.")
@@ -244,30 +260,36 @@ def zeroFilter():
 			print("I've just added spot:", (row+1), (collumn-1), "to the kill list.")
 			gameBoard[row+1][collumn-1] = "."
 			print("I've just made this questionable tile", (row+1), (collumn-1), "a '.'")
+		elif (gameBoard[row+1][collumn-1] == "."):
+			print("You've already guess this tile.")
 		else:
 			gameBoard[row+1][collumn-1] = board[row+1][collumn-1]
 			print("This questionable tile is a number. I've just added it.")
 	print(conquerAndKill)
 	## Check right upper corner
-	if ((collumn != 0) and (row != (width-1))):
+	if ((row != 0) and (collumn != (width-1))):
 		if ((board[row-1][collumn+1] == 0)  and (gameBoard[row-1][collumn+1] != ".")):
 			conquerAndKill.append((row-1))
 			conquerAndKill.append(collumn+1)
 			print("I've just added spot:", (row-1), (collumn+1), "to the kill list.")
 			gameBoard[row-1][collumn+1] = "."
 			print("I've just made this questionable tile", (row-1), (collumn+1), "a '.'")
+		elif (gameBoard[row-1][collumn+1] == "."):
+			print("You've already guess this tile.")
 		else:
 			gameBoard[row-1][collumn+1] = board[row-1][collumn+1]
 			print("This questionable tile is a number. I've just added it.")
 	print(conquerAndKill)
 	## Check right lower corner
-	if ((collumn != (height-1)) and (row != (width-1))):
+	if ((row != (height-1)) and (collumn != (width-1))):
 		if ((board[row+1][collumn+1] == 0)  and (gameBoard[row+1][collumn+1] != ".")):
 			conquerAndKill.append((row+1))
 			conquerAndKill.append(collumn+1)
 			print("I've just added spot:", (row+1), (collumn+1), "to the kill list.")
 			gameBoard[row+1][collumn+1] = "."
 			print("I've just made this questionable tile", (row+1), (collumn+1), "a '.'")
+		elif (gameBoard[row+1][collumn+1] == "."):
+			print("You've already guess this tile.")
 		else:
 			gameBoard[row+1][collumn+1] = board[row+1][collumn+1]
 			print("This questionable tile is a number. I've just added it.")
@@ -280,7 +302,7 @@ def zeroFilter():
 def conqueredAndKilled():
 	## Go through 'conquerAndKill' list, separate pairs
 	if (conquerAndKill != []):
-		if(len(conquerAndKill) >= 20):
+		if(len(conquerAndKill) >= 100):
 			print("welp. ya done messed up friend.")
 		else:
 			print("Long way to go, Captain.")
@@ -297,6 +319,37 @@ def conqueredAndKilled():
 	else:
 		print("She's all out of power!")
 
+	## Check to see if board has been cleared
+	## Generate cleared comparison board
+	print("This is board before:")
+	for x in range(height):
+		print(*board[x])
+	print()
+	fauxBoard = board
+	print("This is fauxBoard before:")
+	for x in range(height):
+		print(*fauxBoard[x])
+	print()
+	for a in range(width):
+		for b in range(height):
+			if (fauxBoard[a][b] == 0):
+				fauxBoard[a][b] = "."
+			elif (fauxBoard[a][b] == "*"):
+				fauxBoard[a][b] = 0
+	print("This is fauxBoard afterwards:")
+	for x in range(height):
+		print(*fauxBoard[x])
+	print()
+	print("This is board afterwards:")
+	for x in range(height):
+		print(*board[x])
+	print()
+	## Comparing 'fauxBoard' with 'gameBoard'
+	if (fauxBoard == gameBoard):
+		print("You've won. Redirect.")
+		youWin()
+
+
 ## Command to filter through the tiles, looking for zeros
 def test():
 	## Checks for all blank adjacent tiles
@@ -312,6 +365,8 @@ def test():
 		elif (board[horizontal][vertical-1] == range(1, 9)): 
 			gameBoard[horizontal][vertical-1] = board[horizontal][vertical-1]
 			print("\nThis questionable tile is a number. I've just added it.\n")
+		else:
+			print("This lil' buddy's already been revealed:", (horizontal), (vertical-1))
 	## Print user's game board
 		tempBoard()
 	## Check right
@@ -325,88 +380,109 @@ def test():
 		elif (board[horizontal][vertical+1] == range(1, 9)): 
 			gameBoard[horizontal][vertical+1] = board[horizontal][vertical+1]
 			print("This questionable tile is a number. I've just added it.")
+		else:
+			print("This lil' buddy's already been revealed:", horizontal, (vertical+1))
 	## Print user's game board
 	tempBoard()
 	## Check above
-	if (row != 0):
-		if ((board[row-1][collumn] == 0)  and (gameBoard[row-1][collumn] != ".")):
-			conquerAndKill.append((row-1))
-			conquerAndKill.append(collumn)
-			print("I've just added spot:", (row-1), collumn, "to the kill list.")
-			gameBoard[row-1][collumn] = "."
-			print("I've just made this questionable tile", (row-1), collumn, "a '.'")
-		else: 
-			gameBoard[row-1][collumn] = board[row-1][collumn]
+	if (horizontal != 0):
+		if ((board[horizontal-1][vertical] == 0)  and (gameBoard[horizontal-1][vertical] != ".")):
+			conquerAndKill.append((horizontal-1))
+			conquerAndKill.append(vertical)
+			print("I've just added spot:", (horizontal-1), vertical, "to the kill list.")
+			gameBoard[horizontal-1][vertical] = "."
+			print("I've just made this questionable tile", (horizontal-1), vertical, "a '.'")
+		elif (board[horizontal-1][vertical] == range(1, 9)): 
+			gameBoard[horizontal-1][vertical] = board[horizontal-1][vertical]
 			print("This questionable tile is a number. I've just added it.")
+		else:
+			print("This lil' buddy's already been revealed:", (horizontal-1), vertical)
+	## Print user's game board
+	tempBoard()
 	## Check below
-	if (row != (height-1)):
-		if ((board[row+1][collumn] == 0)  and (gameBoard[row+1][collumn] != ".")):
-			conquerAndKill.append((row+1))
-			conquerAndKill.append(collumn)
-			print("I've just added spot:", (row+1), collumn, "to the kill list.")
-			gameBoard[row+1][collumn] = "."
-			print("I've just made this questionable tile", (row+1), collumn, "a '.'")
-		else:
-			gameBoard[row+1][collumn] = board[row+1][collumn]
+	if (horizontal != (height-1)):
+		if ((board[horizontal+1][vertical] == 0)  and (gameBoard[horizontal+1][vertical] != ".")):
+			conquerAndKill.append((horizontal+1))
+			conquerAndKill.append(vertical)
+			print("I've just added spot:", (horizontal+1), vertical, "to the kill list.")
+			gameBoard[horizontal+1][vertical] = "."
+			print("I've just made this questionable tile", (horizontal+1), vertical, "a '.'")
+		elif (board[horizontal+1][vertical] == range(1, 9)): 
+			gameBoard[horizontal+1][vertical] = board[horizontal+1][vertical]
 			print("This questionable tile is a number. I've just added it.")
-	print(conquerAndKill)
+		else:
+			print("This lil' buddy's already been revealed:", (horizontal+1), vertical)
+	## Print user's game board
+	tempBoard()
 	## Check left upper corner
-	if ((collumn != (height-1)) and (row != 0)):
-		if ((board[row-1][collumn-1] == 0)  and (gameBoard[row-1][collumn-1] != ".")):
-			conquerAndKill.append((row-1))
-			conquerAndKill.append(collumn-1)
-			print("I've just added spot:", (row-1), (collumn-1), "to the kill list.")
-			gameBoard[row-1][collumn-1] = "."
-			print("I've just made this questionable tile", (row-1), (collumn-1), "a '.'")
-		else:
-			gameBoard[row-1][collumn-1] = board[row-1][collumn-1]
+	if ((vertical != (height-1)) and (horizontal != 0)):
+		if ((board[horizontal-1][vertical-1] == 0)  and (gameBoard[horizontal-1][vertical-1] != ".")):
+			conquerAndKill.append((horizontal-1))
+			conquerAndKill.append(vertical-1)
+			print("I've just added spot:", (horizontal-1), (vertical-1), "to the kill list.")
+			gameBoard[horizontal-1][vertical-1] = "."
+			print("I've just made this questionable tile", (horizontal-1), (vertical-1), "a '.'")
+		elif (board[horizontal-1][vertical-1] == range(1, 9)): 
+			gameBoard[horizontal-1][vertical-1] = board[horizontal-1][vertical-1]
 			print("This questionable tile is a number. I've just added it.")
-	print(conquerAndKill)
+		else:
+			print("This lil' buddy's already been revealed:", (horizontal-1), vertical-1)
+	## Print user's game board
+	tempBoard()
 	## Check left lower corner
-	if ((collumn != 0) and (row != (width-1))):
-		if ((board[row+1][collumn-1] == 0)  and (gameBoard[row+1][collumn-1] != ".")):
-			conquerAndKill.append((row+1))
-			conquerAndKill.append(collumn-1)
-			print("I've just added spot:", (row+1), (collumn-1), "to the kill list.")
-			gameBoard[row+1][collumn-1] = "."
-			print("I've just made this questionable tile", (row+1), (collumn-1), "a '.'")
-		else:
-			gameBoard[row+1][collumn-1] = board[row+1][collumn-1]
+	if ((vertical != 0) and (horizontal != (width-1))):
+		if ((board[horizontal+1][vertical-1] == 0)  and (gameBoard[horizontal+1][vertical-1] != ".")):
+			conquerAndKill.append((horizontal+1))
+			conquerAndKill.append(vertical-1)
+			print("I've just added spot:", (horizontal+1), (vertical-1), "to the kill list.")
+			gameBoard[horizontal+1][vertical-1] = "."
+			print("I've just made this questionable tile", (horizontal+1), (vertical-1), "a '.'")
+		elif (board[horizontal+1][vertical-1] == range(1, 9)): 
+			gameBoard[horizontal+1][vertical-1] = board[horizontal+1][vertical-1]
 			print("This questionable tile is a number. I've just added it.")
+		else:
+			print("This lil' buddy's already been revealed:", (horizontal+1), vertical-1)
+	## Print user's game board
+	tempBoard()
 	print(conquerAndKill)
 	## Check right upper corner
-	if ((collumn != 0) and (row != (width-1))):
-		if ((board[row-1][collumn+1] == 0)  and (gameBoard[row-1][collumn+1] != ".")):
-			conquerAndKill.append((row-1))
-			conquerAndKill.append(collumn+1)
-			print("I've just added spot:", (row-1), (collumn+1), "to the kill list.")
-			gameBoard[row-1][collumn+1] = "."
-			print("I've just made this questionable tile", (row-1), (collumn+1), "a '.'")
-		else:
-			gameBoard[row-1][collumn+1] = board[row-1][collumn+1]
+	print(width)
+	print(width-1)
+	if ((horizontal != 0) and (vertical != (width-1))):
+		print("she cleared me")
+		if ((board[horizontal-1][vertical+1] == 0)  and (gameBoard[horizontal-1][vertical+1] != ".")):
+			conquerAndKill.append((horizontal-1))
+			conquerAndKill.append(vertical+1)
+			print("I've just added spot:", (horizontal-1), (vertical+1), "to the kill list.")
+			gameBoard[horizontal-1][vertical+1] = "."
+			print("I've just made this questionable tile", (horizontal-1), (vertical+1), "a '.'")
+		elif (board[horizontal-1][vertical+1] == range(1, 9)): 
+			gameBoard[horizontal-1][vertical+1] = board[horizontal-1][vertical+1]
 			print("This questionable tile is a number. I've just added it.")
-	print(conquerAndKill)
+		else:
+			print("This lil' buddy's already been revealed:", (horizontal-1), vertical+1)
+	## Print user's game board
+	tempBoard()
 	## Check right lower corner
-	if ((collumn != (height-1)) and (row != (width-1))):
-		if ((board[row+1][collumn+1] == 0)  and (gameBoard[row+1][collumn+1] != ".")):
-			conquerAndKill.append((row+1))
-			conquerAndKill.append(collumn+1)
-			print("I've just added spot:", (row+1), (collumn+1), "to the kill list.")
-			gameBoard[row+1][collumn+1] = "."
-			print("I've just made this questionable tile", (row+1), (collumn+1), "a '.'")
-		else:
-			gameBoard[row+1][collumn+1] = board[row+1][collumn+1]
+	if ((horizontal != (height-1)) and (vertical != (width-1))):
+		if ((board[horizontal+1][vertical+1] == 0)  and (gameBoard[horizontal+1][vertical+1] != ".")):
+			conquerAndKill.append((horizontal+1))
+			conquerAndKill.append(vertical+1)
+			print("I've just added spot:", (horizontal+1), (vertical+1), "to the kill list.")
+			gameBoard[horizontal+1][vertical+1] = "."
+			print("I've just made this questionable tile", (horizontal+1), (vertical+1), "a '.'")
+		elif (board[horizontal+1][vertical+1] == range(1, 9)): 
+			gameBoard[horizontal+1][vertical+1] = board[horizontal+1][vertical+1]
 			print("This questionable tile is a number. I've just added it.")
+		else:
+			print("This lil' buddy's already been revealed:", (horizontal+1), vertical+1)
+	## Print user's game board
+	tempBoard()
+
 	print(conquerAndKill)
 	print(len(conquerAndKill))
 	print("\n\n\n\n\n\n\n\n\n")
 	conqueredAndKilled()
-
-
-
-		## Overwrites them as as '.'
-		## Checks for the bump numbers on board and overwrites their matches on gameBoard
-		## Checks to see if there are any blank tiles left, if not, YOU WIN
 
 	## Print user's game board
 	for x in range(height):
@@ -417,6 +493,12 @@ def test():
 	print()
 	## Redirect to choose tile
 	flagOrClear()
+
+## Command to generate the YOU WIN screen
+def youWin():
+	print("\n\n\n\n\nYOU WIN!\n")
+	tempBoard()
+	exit()
 
 ## TEMP COMMAND to print both final & current board
 def tempBoard():
