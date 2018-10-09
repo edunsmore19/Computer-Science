@@ -137,10 +137,6 @@ def flagOrClear():
 		flagOrClear()
 	elif (choice == "c") and ((gameBoard[row][collumn] != "*") or (gameBoard[row][collumn] == "F")):
 		print("You've chosen to clear", row, ",", collumn)
-		## Print user's game board
-		for x in range(height):
-			print(*gameBoard[x])
-		print()
 		play()
 	else:
 		error()
@@ -177,6 +173,10 @@ def play():
 		## Checks for 0 tiles and overwrites them as '.'
 		elif (board[row][collumn] == 0):
 			gameBoard[row][collumn] = "."
+			## Print the user's game board
+			for x in range(height):
+				print(*gameBoard[x])
+			print()
 
 			## Redirect to choose zeroFilter() to try and suss zeros
 			zeroFilter()
@@ -281,6 +281,7 @@ def conqueredAndKilled():
 		## Print user's game board
 		for x in range(height):
 			print(*gameBoard[x])
+		flagOrClear()
 		print()
 
 	## Check to see if board has been cleared
@@ -365,9 +366,8 @@ def test():
 		elif ((board[horizontal+1][vertical+1] != 0) and (board[horizontal+1][vertical+1] != "*")): 
 			gameBoard[horizontal+1][vertical+1] = board[horizontal+1][vertical+1]
 
-
-	## Redirect to choose tile
-	flagOrClear()
+	## Redirect to check 'conquerAndKill' list for more coordinates
+	conqueredAndKilled()
 
 ## Command to generate the YOU WIN screen
 def youWin():
