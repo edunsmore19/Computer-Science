@@ -14,3 +14,8 @@ def fib(n)
 	if n is 0 or n is 1:
 		return n
 	return fib(n-1) + fib(n-2)
+
+def factorialBat(n):
+	if n is 1:
+		return n
+	return
