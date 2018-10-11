@@ -1,6 +1,7 @@
 ## Project_Minesweeper_2
 ## October 2, 2018
-## I have neither given nor recieve any unauthorized aid.
+## Honor Code: I have neither given nor recieve any unauthorized aid.
+## Sources: n/a (just the Python dictionary)
 ## User provices the width and height for the board as well as
 ## the number of bombs that will be randomly placed and then 
 ## the program determines how many bombs surround each space.
