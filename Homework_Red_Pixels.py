@@ -14,25 +14,14 @@ redGradient = 0
 ## Set size of image
 image = Image.new("RGB", (imgX, imgY))
 
-
-
-
-def loopMe():
-	for a in range(0, 512):
-		global locY
+for a in range(0, 512):
+	for b in range(0, 512):
 		image.putpixel((locX, locY), (255, 0, 0))
-		if (locY != 512):
-			locY+= 1
+		if (locX <= 512):
+			locX+= 1
 		else:
-			locY = 0
-		print(locY)
-		print("locX:", locX)
+			locX = 0
+	locY+= 1
 
 	## Save name/file type
 	image.save("Homework_Red_Pixels.png", "PNG")
-
-for a in range(0, 100):
-	loopMe()
-	print("surprise")
-	locX+= 1
-	print("i lived")
