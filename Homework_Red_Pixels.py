@@ -14,13 +14,9 @@ redGradient = 0
 ## Set size of image
 image = Image.new("RGB", (imgX, imgY))
 
-for a in range(0, 512):
-	for b in range(0, 512):
+for locY in range(0, 512):
+	for locX in range(0, 512):
 		image.putpixel((locX, locY), (255, 0, 0))
-		if (locX <= 512):
-			locX+= 1
-		else:
-			locX = 0
 	locY+= 1
 
 	## Save name/file type
