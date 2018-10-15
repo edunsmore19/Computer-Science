@@ -1,4 +1,4 @@
-## In_Class_Introduction_To_Pillow
+## Class_Work_Introduction_To_Pillow
 ## October 10, 2018
 
 from PIL import Image
