@@ -16,9 +16,64 @@ z = [0, 0]
 c = [-2, 2]
 zSquared = []
 zAndC = []
+tempC = [-2, 2]
+killerC = []
 
 ## Set size of image
 image = Image.new("RGB", (512, 512))
+
+## Generates a list of numbered pairs for 'c' to run through
+def generateNumbers():
+	## Declaring global 'itHasBegun' so program knows when to skip (-2,2)
+	global itHasBegun
+	itHasBegun = False
+	for a in range(0, 3):
+		print("\n\na:", a)
+		for b in range(0, 3):
+			print("b:", b)
+			## Skips first pair b/c (-2,2) is already included in list
+			if (tempC[0] == (-2)) and (tempC[1] == 2) and (itHasBegun == False):
+				tempC.append(tempC[0] + 2)
+				tempC.append(tempC[1])
+				killerC.append(tempC[2])
+				killerC.append(tempC[3])
+				itHasBegun = True
+			## If b is not in its first iteration and killerC[0] isn't 2
+			if (b != 0) and (killerC[0] < 2):
+				killerC[0]+= 2
+				tempC.append(killerC[0])
+				tempC.append(killerC[1])
+			## If b is zero and killerC[1] isn't two
+			elif (b == 0) and (killerC[1] != 2):
+				tempC.append(killerC[0])
+				tempC.append(killerC[1])
+			print("tempC:", tempC)
+			print("killerC:", killerC)
+		killerC[0] = (-2)
+		killerC[1]-= 2
+
+
+
+## Changes 'c' and then rerouts to do calculation over again
+#def generateNumbers():
+	## Edits the x coordinate of 'c'
+#	for a in range(0, 3):
+#		print("\n\n\n\nCheck")
+		## Edits the y coordinate of 'c'
+#		for b in range(0, 3):
+#			print("2nd Check")
+#			print("c:", c)
+#			print("b:", b)
+#			if (c[0] == (-2)) and (c[1] == 2):
+#				tempY.append(tempY[0] - 2)
+#			if (b != 0):
+#				tempY.append(c[1] - 2)
+#			print("c:", c)
+#			print("Redirecting...\n\n")
+			#run()
+#		print("3rd Check")
+#		c[0] = c[0] + 2
+#		c[1] = 2
 
 ## Calculate equations
 def run():
@@ -69,29 +124,6 @@ def check():
 	## Redirect to newNumber for a new set of coordinates
 	newNumber()
 
-## Changes 'c' and then rerouts to do calculation over again
-def newNumber():
-	## Edits the x coordinate of 'c'
-	for a in range(0, 3):
-		print("Check")
-		## Edits the y coordinate of 'c'
-		for b in range(0, 3):
-			print("2nd Check")
-			print("c:", c)
-			print("b:", b)
-			if (c[0] == (-2)) and (c[1] == 2):
-				c[1] = c[1] - 2
-			if (b != 0):
-				c[1] = c[1] - 2
-			print("c:", c)
-			print("Redirecting...\n\n")
-			run()
-		print("3rd Check")
-		c[0] = c[0] + 2
-		c[1] = 2
-
-
-
 ## Save name/file type
 image.save("Homework_Mandelbrot_Exploration.png", "PNG")
 
@@ -99,4 +131,4 @@ image.save("Homework_Mandelbrot_Exploration.png", "PNG")
 print("z:", z)
 print("c:", c)
 ## Run program
-run()
+generateNumbers()
