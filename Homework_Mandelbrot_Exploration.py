@@ -12,14 +12,10 @@ green = 0
 global blue
 blue = 0
 
-global x
-x = 250
-global y
-y = 250
-
 global timesEscaped
 timesEscaped = 0
 
+numRange = [-2, 2]
 z = [0, 0]
 c = []
 zSquared = []
@@ -118,6 +114,12 @@ def check():
 ## Draws pixel
 def drawPixel():
 	global timesEscaped
+	c[0]*()
+	x*(xb-xa)/(imgx-1)+xa
+
+
+
+
 	## Give 'c' coordinates real life x/y counterparts
 	x = 250
 	x+= c[0]
@@ -146,6 +148,7 @@ def drawPixel():
 	run()
 
 ## Save name/file type
+image.putpixel(250, 250), (255, 0, 0)
 image.save("Homework_Mandelbrot_Exploration.png", "PNG")
 
 ## Run program
