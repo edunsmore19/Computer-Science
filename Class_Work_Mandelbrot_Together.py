@@ -4,8 +4,8 @@
 
 from PIL import Image
 
-xa, xb = -2.0, 2.0
-ya, yb = -2.0, 2.0
+xa, xb = -1.233398, -1.0575758
+ya, yb = 0.1875, 0.369140625
 
 imgx, imgy = 512, 512
 
@@ -24,9 +24,9 @@ for y in range(imgy):
 				break
 			z = z**2 + c
 
-		r = (i * 35) % 55
-		g = 10 - i
-		b = (200 * i) % 255
+		r = (252 * i) % 255
+		g = (80 ** i) % 255
+		b = 3
 
 		image.putpixel((x, y), (r, g, b))
 
