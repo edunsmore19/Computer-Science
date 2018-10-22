@@ -4,6 +4,7 @@
 ## mandelbrot sets and one Julia set.
 
 import random
+import colorsys
 from PIL import Image
 
 global goAgain
@@ -42,6 +43,7 @@ def generateMandelbrot():
 				if abs(z) >= 2.0:
 					break
 				z = z**2 + c
+			## Chooses color for first & second generation
 			if (goAgain == 0):
 				print("choosing color")
 				r = (252 * i) % 255
@@ -51,7 +53,7 @@ def generateMandelbrot():
 				print("choosing color again")
 				r = (100 * i) % 255
 				g = (20 ** i) % 255
-				b = 65
+				b = 89
 
 			image.putpixel((x, y), (r, g, b))
 
