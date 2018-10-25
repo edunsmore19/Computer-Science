@@ -5,6 +5,7 @@
 
 import random
 import colorsys
+import math
 from PIL import Image
 
 global goAgain
@@ -15,22 +16,16 @@ def generateMandelbrot():
 	## Code to change coordinates the second time around
 	global goAgain
 	if (goAgain == 0):
-		print("goAgain:", goAgain)
-		xa, xb = -1.233398, -1.0575758
-		ya, yb = 0.1875, 0.369140625
+		xa, xb = 0.3358112724851627, 0.3358112916849378
+		ya, yb = 0.5781364408463064, 0.5781364600460815
 	elif (goAgain == 1):
-		print("goAgain:", goAgain)
-		xa, xb = -1.7477612625807524, -1.745780685916543
-		ya, yb = -0.00505908764898777, -0.0030785109847784042
+		xa, xb = -0.72914898404959059395, -0.729138958594958
+		ya, yb = 0.210768863199801323939, 0.2107788614848048
 	else:
-		print("goAgain:", goAgain)
-		print("Killing me...")
-		julia()
+		generateJulia()
 
 	imgx, imgy = 512, 512
-
 	maxIt = 256
-
 	image = Image.new("RGB", (imgx, imgy))
 
 	for y in range(imgy):
@@ -45,17 +40,20 @@ def generateMandelbrot():
 				z = z**2 + c
 			## Chooses color for first & second generation
 			if (goAgain == 0):
-				print("choosing color")
 				r = (252 * i) % 255
 				g = (80 ** i) % 255
 				b = 3
 			elif (goAgain == 1):
-				print("choosing color again")
-				r = (100 * i) % 255
-				g = (20 ** i) % 255
-				b = 89
+				h = ((i**3)-(i**2))/256
+				s = 1.0/i *100
+				v = 1.0
+				r,g,b = colorsys.hsv_to_rgb(h,s,v)
 
-			image.putpixel((x, y), (r, g, b))
+			## Makes sure that the first image isn't white w/ if-statement
+			if (goAgain == 0):
+				image.putpixel((x, y), (r, g, b))
+			else:
+				image.putpixel((x, y), (int(r*256), int(g*256), int(b*256)))
 
 	## Generate image
 	image.show()
@@ -63,9 +61,43 @@ def generateMandelbrot():
 	goAgain+= 1
 	generateMandelbrot()
 
-## Code generates Julia set
-def julia():
+## Code generates symmetrical Julia set
+def generateJulia():
+## Generate xab and yab points
+	xa, xb = -0.40005, 0.4003335
+	ya, yb = -0.40005, 0.4003335
+
+## Basic image generation stuff
+	imgx, imgy = 512, 512
+	maxIt = 256
+	image = Image.new("RGB", (imgx, imgy))
+
+## Generation of symmetrical Julia set w/ equation
+	for y in range(imgy):
+		zy = y * (yb-ya)/(imgy-1) + ya
+		for x in range(imgx):
+			zx = x * (xb-xa)/(imgx-1) + xa
+			## Change 'c' to equal an imaginary & real coordinate pair
+			c = complex(-0.835, -0.2321)
+			## Change the first 'z' value to equal the imaginary & real coordinates
+			## Basically: let 'z' have a stab at it
+			z = complex(zy, zx)
+			for i in range(maxIt):
+				if abs(z) >= 2.0:
+					break
+				z = z**2 + c
+
+			## Chooses color
+			r = (21 * i) % 255
+			g = int((i ** 2) / 25)
+			b = 100
+			
+			image.putpixel((x, y), (r, g, b))
+
+	## Generate image
+	image.show()
 	exit()
 
 ## Generates fractals
 generateMandelbrot()
+#generateJulia()
