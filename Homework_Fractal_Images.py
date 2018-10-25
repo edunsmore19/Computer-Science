@@ -61,7 +61,8 @@ def generateMandelbrot():
 	goAgain+= 1
 	generateMandelbrot()
 
-## Code generates symmetrical Julia set
+## Code generates symmetrical Julia set, which is a sub-set ("lace") contained
+## within the larger Mandelbrot set.
 def generateJulia():
 ## Generate xab and yab points
 	xa, xb = -0.40005, 0.4003335
