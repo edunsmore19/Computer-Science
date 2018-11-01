@@ -1,5 +1,7 @@
 ## Homework_Fractal_Images
 ## October 21, 2018
+## Honor Code: I have neither given nor recieved any unauthorized aid.
+## Sources: none
 ## Program that draws fractals with Pillow, producing three fractal images, two
 ## mandelbrot sets and one Julia set.
 
