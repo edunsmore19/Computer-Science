@@ -10,26 +10,8 @@
 class Player:
 	def __init__(self, name):
 		self.name = name
-		self.gold = gold
 		## Establish an inventory list to keep track of the player's stuff
 		self.inventory = inventory
-
-	## Allows the user to spend gold
-	def spendGold(self):
-		status = ""
-		## If the user has enough money, allow them to purchase
-		if (self.gold - cost > 0):
-			self.gold-= cost
-			print("You have just purchased", item + ("."))
-		## If the user doesn't have enough money, do not allow them to purchase
-		elif (self.gold - cost < 0):
-			print("You don't have enough money to purchase", item + ("."))
-
-	## Allows the user to gain gold
-	def gainGold(self):
-		self.gold+= boon
-		print("You have just added,", boon + ("to your backpack."))
-		print("You now have", self.gold, "gold.")
 
 	## Allows the user to access their backpack
 	def backpack(self, addToInventory):
@@ -42,12 +24,12 @@ class Player:
 name = ""
 gold = 0
 inventory = []
-cost = 0
-boon = 0
 global roomOneCompleted
 roomOneCompleted = False
 global backpackTaken
 backpackTaken = False
+global backpackPretend
+backpackPretend = ["Inside the backpack you have:"]
 global dresserOpened
 dresserOpened = False
 global dresserPushed
@@ -95,6 +77,8 @@ def roomOneChoices():
 	global thing
 	global action
 	global backpackTaken
+	global backpackPretend
+	backpackPretend = ["Inside the backpack you have:"]
 	global dresserOpened
 	global dresserPushed
 	global knifeTaken
@@ -153,41 +137,79 @@ def roomOneChoices():
 			why()
 		## Print approach line
 		else:
-			print("\nYou approach the backpack.")
+			## You can't 'approach the backpack' if you've taken it, so T/F
+			if (backpackTaken == False):
+				print("\nYou approach the backpack.")
+			else:
+				print()
 		## Valid story choices
 		if (action == "look at"):
-			print("You look at the slightly worn backpack. It's a navy blue color and has your name,",
-			player.name, "stitched into the back in uneven grey thread. It looks usable, but empty.")
-			print("Maybe it would be a good idea to take it?")
+			## It can't be 'usable but empty' if it's got stuff in it, so T/F
+			if (len(player.inventory) == 0):
+				print("You look at the slightly worn backpack. It's a navy blue color and has your name,",
+				player.name, "stitched into the back in uneven grey thread. It looks usable, but empty.")
+				print("Maybe it would be a good idea to take it?")
+			else:
+				print("You look at the slightly worn backpack. It's a navy blue color and has your",
+				"name,", player.name, "stitched into the back in unever grey thread.")
 			choice = input()
 			parse()
 		elif (action == "take"):
-			print("You pick the backpack up off the ground and swing it onto one shoulder. It feels",
-			"comfortable, and empty.")
+			## You can't take the backpack more than once, so T/F
+			if (backpackTaken == True):
+				print("You have already taken the backpack.")
+				print("Maybe you wanted to see what was inside it?")
 			if (backpackTaken == False):
-				## Add backpack to inventory
-				player.backpack("backpack")
-				## Backpack has now been taken, set variable to 'true'
-				backpackTaken = True
+				print("You pick the backpack up off the ground and swing it onto one shoulder. It feels",
+				"comfortable, and empty.")
+				if (backpackTaken == False):
+					## Add backpack to inventory
+					player.backpack("backpack")
+					## Backpack has now been taken, set variable to 'true'
+					backpackTaken = True
 			choice = input()
 			parse()
 		elif (action == "open"):
-			print("You kneel down and unzip the backpack carefully. You peer inside and see that it",
-			"is empty.")
-			print("Maybe you could use it to carry things?")
+			## Allows user to access inventory once they have both taken the backpack & another
+			## object (not the backpack)
+			if (backpackTaken == True) and (len(player.inventory) != 0):
+				for x in range(len(player.inventory)):
+					backpackPretend.append("\u001b[7m")
+					if (x != 0):
+						backpackPretend.append(player.inventory[x])
+						if (x != (len(player.inventory)-1)):
+							backpackPretend.append("\u001b[0m and ")
+						else:
+							backpackPretend.append("\u001b[0m")
+				print(*backpackPretend)
+			else:
+				print("You kneel down and unzip the backpack carefully. You peer inside and see that it",
+				"is empty.")
+				print("Maybe you could use it to carry things?")
 			choice = input()
 			parse()
 		elif (action == "push"):
-			print("You nudge the backpack with your toe.")
-			print("It shifts several inches.")
+			## You can't 'nudge the backpack with your toe' if you're wearing it, so T/F
+			if (backpackTaken == False):
+				print("You nudge the backpack with your toe.")
+				print("It shifts several inches.")
+			else:
+				print("You're wearing the backpack. \nHow do you expect it to be pushed?")
 			choice = input()
 			parse()
 		elif (action == "feel"):
-			print("You kneel down and run a hand over the tough navy canvas backpack. It feels,",
-			"rough to the touch, but strong. You ghost your fingers over your name,", player.name,
-			"stitched into the canvas. The thread is slightly worn and was probably once white but",
-			"it's now turned a greyish color.")
-			print("The backpack is empty right now, but you surmise it could carry a lot.")
+			## You can't 'kneel down' if you're wearing it, so T/F
+			if (backpackTaken == False):
+				print("You kneel down and run a hand over the tough navy canvas backpack. It feels,",
+				"rough to the touch, but strong. You ghost your fingers over your name,", player.name,
+				"stitched into the canvas. The thread is slightly worn and was probably once white but",
+				"it's now turned a greyish color.")
+				print("The backpack is empty right now, but you surmise it could carry a lot.")
+			else:
+				print("You reach awkwardly around and run a hand over the tough navy canvas backpack. It feels,",
+				"rough to the touch, but strong. You ghost your fingers over your name,", player.name,
+				"stitched into the canvas. The thread is slightly worn and was probably once white but",
+				"it's now turned a greyish color.")
 			choice = input()
 			parse()
 
@@ -200,10 +222,16 @@ def roomOneChoices():
 			print("\nYou approach the dresser.")
 		## Valid story choices
 		if (action == "look at"):
-			print("The dresser is wellmade and looks heavy. You notice that the dresser is blocking",
-			"the door. You probably won't be able to leave without moving it. You glance down at the",
-			"ground and see white scratches on the wooden floor leading to the dresser.")
-			print("The dresser also has several drawers... perhaps there's something inside?")
+			## The dresser can't be blocking the door if its been pushed, so T/F
+			if (dresserPushed == False):
+				print("The dresser is wellmade and looks heavy. You notice that the dresser is blocking",
+				"the door. You probably won't be able to leave without moving it. You glance down at the",
+				"ground and see white scratches on the wooden floor leading to the dresser.")
+				print("The dresser also has several drawers... perhaps there's something inside?")
+			else:
+				print("The dresser is wellmade and looks heavy. You notice that the dresser has been pushed free of",
+				"the door.")
+				print("The dresser also has several drawers... perhaps there's something inside?")
 			choice = input()
 			parse()
 		elif (action == "open"):
@@ -216,16 +244,25 @@ def roomOneChoices():
 				nouns.append("coins")
 			## Dresser has now been opened, change variable to 'true'
 			dresserOpened = True
-			print("You pull on one of the dresser drawer's knobs. It opens smoothly and you see a",
-			"\u001b[7m knife \u001b[0m. It looks like it's meant for hunting, and it has a sheath.",
-			"It also looks sharp.")
-			print("You pull open another drawer. You see a set of \u001b[7m matches \u001b[0m, and",
-			"a \u001b[7m pendant \u001b[0m made of raw pyrite with strange symbols carved into it,",
-			"hung from a leather cord.")
-			print("You open the last drawer. Inside is a paper \u001b[7m map \u001b[0m and a stack",
-			"of ten gold \u001b[7m coins \u001b[0m.")
+			## Make sure you only see the items that are still inside the dresser, so T/F
+			if (knifeTaken == False):
+				print("You pull on one of the dresser drawer's knobs. It opens smoothly and you see a",
+				"\u001b[7m knife \u001b[0m. It looks like it's meant for hunting, and it has a sheath.",
+				"It also looks sharp.")
+			if (matchesTaken == False):
+				print("You pull open another drawer. You see a set of \u001b[7m matches \u001b[0m.")
+			if (pendantTaken == False):
+				print(" You also see a \u001b[7m pendant \u001b[0m made of raw pyrite with strange symbols carved into it,",
+				"hung from a leather cord.")
+			if (mapTaken == False):
+				print("You open the last drawer. Inside is a paper \u001b[7m map \u001b[0m.")
+			if (coinsTaken == False):
+				print("Also inside the last drawer is a stack of ten gold \u001b[7m coins \u001b[0m.")
+			if (knifeTaken) and (matchesTaken) and (pendantTaken) and (mapTaken) and (coinsTaken):
+				print("The contents of the dresser have been emptied. There is nothing inside the drawers.")
 			choice = input()
 			parse()
+			#########TEMP CODE
 		elif (action == "push"):
 			## Dresser has now been pushed, change variable to 'true'
 			dresserPushed = True
@@ -294,7 +331,8 @@ def roomOneChoices():
 				why()
 			## Print approach line
 			else:
-				print("\nInside the dresser is a knife.")
+				if (knifeTaken == False):
+					print("\nInside the dresser is a knife.")
 			## Valid story choices
 			if (action == "look at"):
 				print("You regard the knife carefully. It's a silver hunting knife with a black,",
@@ -338,7 +376,8 @@ def roomOneChoices():
 				why()
 			## Print approach line
 			else:
-				print("\nInside the dresser is a pendant.")
+				if (pendantTaken == False):
+					print("\nInside the dresser is a pendant.")
 			## Valid story choices
 			if (action == "look at"):
 				print("The pendant is made of shiny, metalic pyrite. It hangs from a plain leather",
@@ -381,7 +420,8 @@ def roomOneChoices():
 				why()
 			## Print approach line
 			else:
-				print("\nInside the dresser is a set of matches.")
+				if (matchesTaken == False):
+					print("\nInside the dresser is a set of matches.")
 			## Valid story choices
 			if (action == "look at"):
 				print("The matches are in a little, folded carboard packet like you might get",
@@ -421,7 +461,8 @@ def roomOneChoices():
 				why()
 			## Print approach line
 			else:
-				print("\nInside the dresser is a map.")
+				if (mapTaken == False):
+					print("\nInside the dresser is a map.")
 			## Valid story choices
 			if (action == "look at"):
 				print("The map is in color and details the city as well as the surrounding",
@@ -462,7 +503,8 @@ def roomOneChoices():
 				why()
 			## Print approach line
 			else:
-				print("\nInside the dresser are ten gold coins.")
+				if (coinsTaken == False):
+					print("\nInside the dresser are ten gold coins.")
 			## Valid story choices
 			if (action == "look at"):
 				print("You look at the pile of coins and decide that they are indeed real gold.",
@@ -504,9 +546,6 @@ def roomTwo():
 ## Cut up & parse meaning from user input
 def parse():
 	global choice
-	### TEMP CODE
-	print("Choice:", choice)
-	### TEMP CODE ENDS
 	choice = choice.lower()
 	## Figure out the action
 	global action
