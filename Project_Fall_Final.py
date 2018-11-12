@@ -303,7 +303,7 @@ def roomOneChoices():
 						## Redirect to 'roomTwo' and set 'roomOneCompleted' to True
 						print("You open the door cautiously, and it creaks slightly. You're going",
 						"to try and find others. You glance at the map. Maybe there are people hiding",
-						"in the Trebond Ruins? You don't know, but you decide that you'll try there",
+						"in the Trebond Mines? You don't know, but you decide that you'll try there",
 						"first.")
 						roomOneCompleted = True
 						roomTwo()
