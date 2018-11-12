@@ -24,10 +24,16 @@ for y in range(height):
 	for x in range(width):
 		colors = image.getpixel((x, y))
 		r, g, b = colors
-		r = r - 50
-		g = g - 50
-		b = b - 50
+		## This forms grayscale
+		#r = b
+		#g = r
+		#b = g
+		if (g >= 150):
+			r = b
+			g = r
+			b = g
 		image.putpixel((x, y), (r, g, b))
+
 
 image.show()
 
