@@ -262,13 +262,16 @@ def roomOneChoices():
 				print("The contents of the dresser have been emptied. There is nothing inside the drawers.")
 			choice = input()
 			parse()
-			#########TEMP CODE
 		elif (action == "push"):
+			## You can only push the dresser once, so T/F
+			if (dresserPushed == False):
+				print("You walk to the side of the dresser and put your hands on the solid wood before",
+				"steeling yourself and giving it a gigantic shove. The dresser scrapes heavily against",
+				"the floor, but eventually you move it clear of the door.")
+			else:
+				print("You have already pushed the dresser as far as it will go.")
 			## Dresser has now been pushed, change variable to 'true'
 			dresserPushed = True
-			print("You walk to the side of the dresser and put your hands on the solid wood before",
-			"steeling yourself and giving it a gigantic shove. The dresser scrapes heavily against",
-			"the floor, but eventually you move it clear of the door.")
 			choice = input()
 			parse()
 		elif (action == "feel"):
@@ -286,6 +289,7 @@ def roomOneChoices():
 			print("\nYou approach the door.")
 		## Valid story choices
 		if (action == "look at"):
+			## If dresser has been moved, it cannot obstruct door, so T/F
 			if (dresserPushed == False):
 				print("The door is obstructed by the dresser. It looks as if you won't be able to",
 				"open it with the dresser where it is.")
@@ -335,15 +339,23 @@ def roomOneChoices():
 					print("\nInside the dresser is a knife.")
 			## Valid story choices
 			if (action == "look at"):
-				print("You regard the knife carefully. It's a silver hunting knife with a black,",
-				"metal handle. It hasn't been properly put away in its sheath, so you can see the",
-				"edge of the blade peaking out. It looks deadly.")
-				print("The sheath is plain brown leather devoid of patterns or decoration.")
+				if (knifeTaken == False):
+					print("You regard the knife carefully. It's a silver hunting knife with a black,",
+					"metal handle. It hasn't been properly put away in its sheath, so you can see the",
+					"edge of the blade peaking out. It looks deadly.")
+					print("The sheath is plain brown leather devoid of patterns or decoration.")
+				else:
+					print("You regard the knife carefully. It's a silver hunting knife with a black,",
+					"metal handle. It looks deadly.")
+					print("The sheath is plain brown leather devoid of patterns or decoration.")
 				choice = input()
 				parse()
 			elif (action == "push"):
-				print("You push the knife gingerly a few inches to the left. It's heavier than",
-				"it looks.")
+				if (knifeTaken == False):
+					print("You push the knife gingerly a few inches to the left. It's heavier than",
+					"it looks.")
+				else:
+					print("Why would you want to do that?")
 				choice = input()
 				parse()
 			elif (action == "feel"):
@@ -355,10 +367,13 @@ def roomOneChoices():
 				parse()
 			elif (action == "take"):
 				if (backpackTaken == True):
-					print("Carefully, you pick up the knife and its sheath. You slide the knife",
-					"completely into the leather sheath before putting it in your backpack.")
-					print("Something tells you that this knife is sharper than it looks and that",
-					"you ought to handle it as such.")
+					if (knifeTaken ==False):
+						print("Carefully, you pick up the knife and its sheath. You slide the knife",
+						"completely into the leather sheath before putting it in your backpack.")
+						print("Something tells you that this knife is sharper than it looks and that",
+						"you ought to handle it as such.")
+					else:
+						print("You have already taken the knife.")
 					if (knifeTaken == False):
 						player.backpack("knife")
 						## Knife has now been taken, set variable to 'true'
@@ -366,7 +381,7 @@ def roomOneChoices():
 					choice = input()
 					parse()
 				else:
-					print("Unfortunetly, you need something to carry the knife in. You cannot take it.")
+					print("Unfortunately, you need something to carry the knife in. You cannot take it.")
 					choice = input()
 					parse()
 
@@ -388,7 +403,10 @@ def roomOneChoices():
 				choice = input()
 				parse()
 			elif (action == "push"):
-				print("You nudge the pendant to a couple of inches to the left.")
+				if (pendantTaken == False):
+					print("You nudge the pendant to a couple of inches to the left.")
+				else:
+					print("Why would you want to do that?")
 				choice = input()
 				parse()
 			elif (action == "feel"):
@@ -399,10 +417,13 @@ def roomOneChoices():
 				parse()
 			elif (action == "take"):
 				if (backpackTaken == True):
-					print("You grasp the pendant in your hand. It's cool to the touch and you",
-					"observe it for a moment while it rest in the palm of your hand. What a",
-					"strange object. You wonder who it belonged to.")
-					print("You turn and put it into your backpack.")
+					if (pendantTaken == False):
+						print("You grasp the pendant in your hand. It's cool to the touch and you",
+						"observe it for a moment while it rest in the palm of your hand. What a",
+						"strange object. You wonder who it belonged to.")
+						print("You turn and put it into your backpack.")
+					else:
+						print("You have already taken the pendant.")
 					if (pendantTaken == False):
 						player.backpack("pendant")
 						## Pendant has now been taken, set variable to 'true'
@@ -431,7 +452,10 @@ def roomOneChoices():
 				choice = input()
 				parse()
 			elif (action == "push"):
-				print("You use a finger to slide the packet of matches a litle to the left.")
+				if (matchesTaken == False):
+					print("You use a finger to slide the packet of matches a litle to the left.")
+				else:
+					print("Why would you want to do that?")
 				choice = input()
 				parse()
 			elif (action == "feel"):
@@ -442,8 +466,11 @@ def roomOneChoices():
 				parse()
 			elif (action == "take"):
 				if (backpackTaken == True):
-					print("You pick up the wee packet of matches. You twist around to unzip your",
-					"backpack and stick them inside.")
+					if (matchesTaken == False):
+						print("You pick up the wee packet of matches. You twist around to unzip your",
+						"backpack and stick them inside.")
+					else:
+						print("You have already taken the packet of matches.")
 					if (matchesTaken == False):
 						player.backpack("matches")
 						## Matches have now been taken, set variable to 'true'
@@ -451,7 +478,7 @@ def roomOneChoices():
 					choice = input()
 					parse()
 				else:
-					print("Unfortunetly, you need something to carry the matches in. You cannot take it.")
+					print("Unfortunately, you need something to carry the matches in. You cannot take it.")
 					choice = input()
 					parse()
 
@@ -474,7 +501,10 @@ def roomOneChoices():
 				choice = input()
 				parse()
 			elif (action == "push"):
-				print("You push the map a little to the left.")
+				if (mapTaken == False):
+					print("You push the map a little to the left.")
+				else:
+					print("Why would you want to do that?")
 				choice = input()
 				parse()
 			elif (action == "feel"):
@@ -484,8 +514,11 @@ def roomOneChoices():
 				parse()
 			elif (action == "take"):
 				if (backpackTaken == True):
-					print("You take the map out of the dresser and fold it carefully. You unzip",
-					"your backpack and place it inside.")
+					if (mapTaken == False):
+						print("You take the map out of the dresser and fold it carefully. You unzip",
+						"your backpack and place it inside.")
+					else:
+						print("You have already taken the map.")
 					if (mapTaken == False):
 						player.backpack("map")
 						## Map has now been taken, set variable to 'true'
@@ -493,7 +526,7 @@ def roomOneChoices():
 					choice = input()
 					parse()
 				else:
-					print("Unfortunetly, you need something to carry the map in. You cannot take it.")
+					print("Unfortunately, you need something to carry the map in. You cannot take it.")
 					choice = input()
 					parse()
 
@@ -513,21 +546,30 @@ def roomOneChoices():
 				choice = input()
 				parse()
 			elif (action == "push"):
-				print("You push the pile of coins to the left and they clatter and role all",
-				"over the inside of the drawer.")
+				if (coinsTaken == False):
+					print("You push the pile of coins to the left and they clatter and role all",
+					"over the inside of the drawer.")
+				else:
+					print("Why would you want to do that?")
 				choice = input()
 				parse()
 			elif (action == "feel"):
 				print("You pick up a coin in your hand. It feels solid, a little heavy, and",
 				"it's slightly cold.")
-				print("You put the coin back in the drawer.")
+				if (coinsTaken == False):
+					print("You put the coin back in the drawer.")
+				else:
+					print("You put the coin back in your backpack.")
 				choice = input()
 				parse()
 			elif (action == "take"):
 				if (backpackTaken == True):
-					print("You reach into the dresser with both hands and scoop out the coins.",
-					"They clink together in your hands before you unceremoniously dump them",
-					"with a clatter into your backpack.")
+					if (coinsTaken == False):
+						print("You reach into the dresser with both hands and scoop out the coins.",
+						"They clink together in your hands before you unceremoniously dump them",
+						"with a clatter into your backpack.")
+					else:
+						print("You have already taken the coins.")
 					if (coinsTaken == False):
 						player.backpack("coins")
 						## Coins have now been taken, set variable to 'true'
@@ -535,12 +577,14 @@ def roomOneChoices():
 					choice = input()
 					parse()
 				else:
-					print("Unfortunetly, you need something to carry the coins in. You cannot take them.")
+					print("Unfortunately, you need something to carry the coins in. You cannot take them.")
 					choice = input()
 					parse()
 
 def roomTwo():
-	print("You have reached 'roomTwo'.")
+	print("\nThis is the end of your journey for now.")
+	print("Play 'Part Two'* to learn what happens next!")
+	print("\n\n\n***Developer's Note: 'Part Two' has yet to be created.")
 	exit()
 
 ## Cut up & parse meaning from user input
