@@ -10,7 +10,7 @@
 import sys
 import os
 import colorsys
-import math
+from random import randint
 from PIL import Image
 
 os.system("open ~/Users/eilidh/Desktop/OneDrive\ Files/Documents\ \&\ Powerpoints/School/Twelfth\ Grade\;\ Choate/Computer\ Science/error.png")
@@ -42,16 +42,17 @@ for y in range(height):
 			g = r
 		if (r >= 200):
 			r = (r ** 3) % 255
-		if (b >= 150):
+		if (b >= 100):
 			b = (b ** 3) % 255
 		if (r >= 100):
 			r = (r ** 3) % 255
 		if (r >= 230) and (b >= 230) and (g >= 230):
-			 r = math.random(0, 255)
-			 b = math.random(0, 255)
-			 g = math.random(0, 255)
+			 r = randint(0, 255)
+			 b = randint(0, 255)
+			 g = randint(0, 255)
 		image.putpixel((x, y), (r, g, b))
 
 
 image.show()
-otherImage.show()
+exit()
+#otherImage.show()
