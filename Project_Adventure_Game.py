@@ -6,7 +6,7 @@
 
 ## 'title' clears terminal & presents title
 def title():
-	print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+	#print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
 	print("Welcome to WITCHY BUISNESS.")
 	readBetter()
 	start()
@@ -180,10 +180,10 @@ def powers():
 def powersToDistract():
 	powers()
 	print("You, being a, " + witchKind + ", have more options than a mere human.")
-	if (witchType == 1):
+	if (witchType == 2):
 		action = """cause the sheriff’s coffee to evaporate. He attempts to take a sip,
 but becomes confused. He gets up to make some more coffee."""
-	elif (witchType == 2):
+	elif (witchType == 1):
 		action = """cause the sheriff’s book to catch fire. He throws it away
 from himself, jumps to his feet, and attempts to stomp it out."""
 	elif (witchType == 3):
@@ -280,10 +280,10 @@ def pickTheLock():
 def powersToUnlock():
 	print("You concentrate on the lock and pray for something to happen.")
 	powers()
-	if (witchType == 1):
+	if (witchType == 2):
 		action = """Water starts to gather on, and around the metal of the lock. 
 The lock begins to rust before your eyes--it eventually disintigrates."""
-	elif (witchType == 2):
+	elif (witchType == 1):
 		action = "Flames errupt from your hands! The lock melts under your barrage."
 	elif (witchType == 3):
 		action = """The metal of the lock creaks and moans. It twists itself

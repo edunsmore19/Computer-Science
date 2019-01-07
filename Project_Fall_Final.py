@@ -331,7 +331,7 @@ def roomOneChoices():
 	if (dresserOpened == True):
 		if (thing == "knife"):
 			unknownAction()
-			if (action == "talk to") or (action == "give") or (action == "show") or (action == "buy") or (action == "eat") or (action == "drink"):
+			if (action == "talk to") or (action == "give") or (action == "show") or (action == "buy") or (action == "eat") or (action == "drink") or (action == "open"):
 				why()
 			## Print approach line
 			else:
@@ -415,6 +415,10 @@ def roomOneChoices():
 				"the pads of your fingers.")
 				choice = input()
 				parse()
+			elif (action == "open"):
+				print("It's not that kind of pendant, you can't open it.")
+				choice = input()
+				parse()
 			elif (action == "take"):
 				if (backpackTaken == True):
 					if (pendantTaken == False):
@@ -437,7 +441,7 @@ def roomOneChoices():
 
 		elif (thing == "matches"):
 			unknownAction()
-			if (action == "talk to") or (action == "give") or (action == "show") or (action == "buy") or (action == "eat") or (action == "drink"):
+			if (action == "talk to") or (action == "give") or (action == "show") or (action == "buy") or (action == "eat") or (action == "drink") or (action == "open"):
 				why()
 			## Print approach line
 			else:
@@ -484,7 +488,7 @@ def roomOneChoices():
 
 		elif (thing == "map"):
 			unknownAction()
-			if (action == "talk to") or (action == "give") or (action == "show") or (action == "buy") or (action == "eat") or (action == "drink"):
+			if (action == "talk to") or (action == "give") or (action == "show") or (action == "buy") or (action == "eat") or (action == "drink") or (action == "open"):
 				why()
 			## Print approach line
 			else:
@@ -532,7 +536,7 @@ def roomOneChoices():
 
 		elif (thing == "coins"):
 			unknownAction()
-			if (action == "talk to") or (action == "give") or (action == "show") or (action == "buy") or (action == "eat") or (action == "drink"):
+			if (action == "talk to") or (action == "give") or (action == "show") or (action == "buy") or (action == "eat") or (action == "drink") or (action == "open"):
 				why()
 			## Print approach line
 			else:
