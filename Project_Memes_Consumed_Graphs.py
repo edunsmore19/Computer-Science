@@ -7,6 +7,8 @@
 ## https://medium.com/python-pandemonium/data-visualization-in-python-scatter-plots-in-matplotlib-da90ac4c99f9
 ## (Understanding how to make histograms)
 ## https://matplotlib.org/api/_as_gen/matplotlib.pyplot.hist.html
+## Honor Code:
+## I have neither given nor recieved any unauthorized aid.
 
 import matplotlib.pyplot as plt
 import random
