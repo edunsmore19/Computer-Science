@@ -6,6 +6,7 @@
 ## Understanding 'defaultdict' container: https://www.hackerrank.com/challenges/defaultdict-tutorial/problem
 ## Understanding 'gutenberg' corpora: https://www.hackerrank.com/challenges/defaultdict-tutorial/problem
 ## Understanding 'keys()' method: https://www.tutorialspoint.com/python3/dictionary_keys.htm
+## Understanding NLTK's 'syntax trees': http://www.nltk.org/book/ch08.html
 ## Pledge:
 ## I have neither given nor recieved any unauthorized aid.
 
@@ -89,6 +90,7 @@ def countSyllables(word):
 print("poet:", countSyllables("poet"))
 print("does:", countSyllables("does"))
 print("caterwaul:", countSyllables("caterwaul"))
+print()
 
 ## Syntax-aware generation with NLTK syntax trees
 
