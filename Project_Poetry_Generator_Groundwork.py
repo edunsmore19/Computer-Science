@@ -1,13 +1,14 @@
 ## Project_Poetry_Generator_Groundwork
 ## February 8, 2019
-## A program that randomly generates poetry
+## A program that randomly generates poetry (the underlying basics/understanding)
 ## Sources:
 ## The basics behind random text prediction: https://www.hallada.net/2017/07/11/generating-random-poems-with-python.html
 ## Understanding 'defaultdict' container: https://www.hackerrank.com/challenges/defaultdict-tutorial/problem
 ## Understanding 'gutenberg' corpora: https://www.hackerrank.com/challenges/defaultdict-tutorial/problem
 ## Understanding 'keys()' method: https://www.tutorialspoint.com/python3/dictionary_keys.htm
 ## Understanding NLTK's 'syntax trees': http://www.nltk.org/book/ch08.html
-## Pledge:
+## Understanding how tokenize w/out punctuation: https://stackoverflow.com/questions/15547409/how-to-get-rid-of-punctuation-using-nltk-tokenizer
+##Pledge:
 ## I have neither given nor recieved any unauthorized aid.
 
 ## Import libraries
@@ -46,7 +47,8 @@ for x in range(len(tokenizedCorpus) - 2):
 print({k: dict(v) for k, v in dict(cfd).items()})
 ## Discovering the most likely word (ex: to follow 'the')
 print(max(cfd["the"])) ## Print results as "quick"
-print()
+priUnderstanding how tokenize w/out punctuation: https://stackoverflow.com/questions/15547409/how-to-get-rid-of-punctuation-using-nltk-tokenizernt()
+##
 
 ## Generating random text
 ## For the purpose of this example, we're going to use a text already included in NLTK.
