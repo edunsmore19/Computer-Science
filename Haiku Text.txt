@@ -1,0 +1,411 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf200
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;\red33\green47\blue63;\red67\green67\blue67;\red255\green255\blue255;
+}
+{\*\expandedcolortbl;;\cssrgb\c17255\c24314\c31373;\cssrgb\c33333\c33333\c33333;\cssrgb\c100000\c100000\c100000;
+}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs24 \cf2 \expnd0\expndtw0\kerning0
+Adamant  unyielding  a very hard substance\
+Adroit  clever  resourceful\
+Amatory  sexual\
+Animistic  quality of recurrence or reversion to earlier form\
+Antic  clownish  frolicsome\
+Arcadian  serene\
+Baleful  deadly  foreboding\
+Bellicose  quarrelsome  its synonym belligerent can also be a   \
+Bilious  unpleasant  peevish\
+Boorish  crude  insensitive\
+Calamitous  disastrous\
+Caustic  corrosive  sarcastic  a corrosive substance\
+Cerulean  sky blue\
+Comely  attractive\
+Concomitant  accompanying\
+Contumacious  rebellious\
+Corpulent  obese\
+Crapulous  immoderate in appetite\
+Defamatory  maliciously misrepresenting\
+Didactic  conveying information or moral instruction\
+Dilatory  causing delay  tardy\
+Dowdy  shabby  old-fashioned  an unkempt woman\
+Efficacious  producing a desired effect\
+Effulgent  brilliantly radiant\
+Egregious  conspicuous  flagrant\
+Endemic  prevalent  native  peculiar to an area\
+Equanimous  even  balanced\
+Execrable  wretched  detestable\
+Fastidious  meticulous  overly delicate\
+Feckless  weak  irresponsible\
+Fecund  prolific  inventive\
+Friable  brittle\
+Fulsome  abundant  overdone  effusive\
+Garrulous  wordy  talkative\
+Guileless  naive\
+Gustatory  having to do with taste or eating\
+Heuristic  learning through trial-and-error or problem solving\
+Histrionic  affected  theatrical\
+Hubristic  proud  excessively self-confident\
+Incendiary  inflammatory  spontaneously combustible  hot\
+Insidious  subtle  seductive  treacherous\
+Insolent  impudent  contemptuous\
+Intransigent  uncompromising\
+Inveterate  habitual  persistent\
+Invidious  resentful  envious  obnoxious\
+Irksome  annoying\
+Jejune  dull  puerile\
+Jocular  jesting  playful\
+Judicious  discreet\
+Lachrymose  tearful\
+Limpid  simple  transparent  serene\
+Loquacious  talkative\
+Luminous  clear  shining\
+Mannered  artificial  stilted\
+Mendacious  deceptive\
+Meretricious  whorish  superficially appealing  pretentious\
+Minatory  menacing\
+Mordant  biting  incisive  pungent\
+Munificent  lavish  generous\
+Nefarious  wicked\
+Noxious  harmful  corrupting\
+Obtuse  blunt  stupid\
+Parsimonious  frugal  restrained\
+Pendulous  suspended  indecisive\
+Pernicious  injurious  deadly\
+Pervasive  widespread\
+Petulant  rude  ill humored\
+Platitudinous  resembling or full of dull or banal comments\
+Precipitate  steep  speedy\
+Propitious  auspicious  advantageous  benevolent\
+Puckish  impish\
+Querulous  cranky  whining\
+Quiescent  inactive  untroublesome\
+Rebarbative  irritating  repellent\
+Recalcitrant  resistant  obstinate\
+Redolent  aromatic  evocative\
+Rhadamanthine  harshly strict\
+Risible  laughable\
+Ruminative  contemplative\
+Sagacious  wise  discerning\
+Salubrious  healthful\
+Sartorial  relating to attire  especially tailored fashions\
+Sclerotic  hardening\
+Serpentine  snake-like  winding  tempting or wily\
+Spasmodic  having to do with or resembling a spasm  excitable  intermittent\
+Strident  harsh  discordant  obtrusively loud\
+Taciturn  closemouthed  reticent\
+Tenacious  persistent  cohesive \
+Tremulous  nervous  trembling  timid  sensitive\
+Trenchant  sharp  penetrating  distinct\
+Turbulent  restless  tempestuous\
+Turgid  swollen  pompous\
+Ubiquitous  pervasive  widespread\
+Uxorious  inordinately affectionate or compliant with a wife\
+Verdant  green  unripe\
+Voluble  glib  given to speaking\
+Voracious  ravenous  insatiable\
+Wheedling  flattering\
+Withering  devastating\
+Zealous  eager  devoted\
+\
+\pard\pardeftab720\partightenfactor0
+
+\fs28 \cf3 \cb4 factory reset button\cb1 \
+\cb4 blood rage\cb1 \
+\cb4 idiot\cb1 \
+\cb4 toaster\cb1 \
+\cb4 legend\cb1 \
+\cb4 death wish\cb1 \
+\cb4 therapy\cb1 \
+\cb4 goal in life\cb1 \
+\cb4 marketing idea\cb1 \
+\cb4 psychic\cb1 \
+\cb4 knife\cb1 \
+\cb4 sandwich\cb1 \
+\cb4 hunting ground\cb1 \
+\cb4 lettuce\cb1 \
+\cb4 kitty\cb1 \
+\cb4 friendly grandma\cb1 \
+\cb4 french chef\cb1 \
+\cb4 antidepressant drug\cb1 \
+\cb4 corn cake\cb1 \
+\cb4 president of the night\cb1 \
+\cb4 candlestick maker\cb1 \
+\cb4 coffee pot\cb1 \
+\cb4 brethren\cb1 \
+\cb4 national security agency\cb1 \
+\cb4 tank\cb1 \
+\cb4 useless brakes\cb1 \
+\cb4 international law enforcement agency\cb1 \
+\cb4 sound barrier\cb1 \
+\cb4 skinny woman\cb1 \
+\cb4 private investor\cb1 \
+\cb4 main people\cb1 \
+\cb4 stock car\cb1 \
+\cb4 elastic band\cb1 \
+\cb4 whole blood\cb1 \
+\cb4 telephone\cb1 \
+\cb4 mad cow disease\cb1 \
+\cb4 scourge upon the earth\cb1 \
+\cb4 rough-skinned newt\cb1 \
+\cb4 karate\cb1 \
+\cb4 pistol\cb1 \
+\cb4 legal warrant\cb1 \
+\cb4 people who are hurt\cb1 \
+\cb4 idea he suggested\cb1 \
+\cb4 party of the first part\cb1 \
+\cb4 place of business\cb1 \
+\cb4 double fault\cb1 \
+\cb4 kitty cat\cb1 \
+\cb4 famous landscape painting\cb1 \
+\cb4 hairy legs\cb1 \
+\cb4 old irish cottage\cb1 \
+\cb4 pocket flask\cb1 \
+\cb4 liquid oxygen\cb1 \
+\cb4 laser beams\cb1 \
+\cb4 preventive strike\cb1 \
+\cb4 dingle berry\cb1 \
+\cb4 reading party\cb1 \
+\cb4 generalized bond\cb1 \
+\cb4 indirect expression\cb1 \
+\cb4 messiness\cb1 \
+\cb4 love of her life\cb1 \
+\cb4 trust fund\cb1 \
+\cb4 volcanic crater\cb1 \
+\cb4 travel guidebook\cb1 \
+\cb4 electric furnace\cb1 \
+\cb4 internal respiration\cb1 \
+\cb4 police squad\cb1 \
+\cb4 mad-dog skullcap\cb1 \
+\cb4 sneaky criminal\cb1 \
+\cb4 new version\cb1 \
+\cb4 keepsake machete\cb1 \
+\cb4 gaming laptop\cb1 \
+\cb4 hissy fit\cb1 \
+\cb4 dog poop\cb1 \
+\cb4 dragon\cb1 \
+\cb4 mediation\cb1 \
+\cb4 patrolman\cb1 \
+\cb4 pervert\cb1 \
+\cb4 toilet seat\cb1 \
+\cb4 haunted graveyard\cb1 \
+\cb4 really tough guy\cb1 \
+\cb4 twinkling uncleanness\cb1 \
+\cb4 wrinkle\cb1 \
+\cb4 personal credit line\cb1 \
+\cb4 multi-billionaire\cb1 \
+\cb4 mental disorder\cb1 \
+\cb4 sweet tailpipe\cb1 \
+\cb4 boiling water\cb1 \
+\cb4 deer antler\cb1 \
+\cb4 background story\cb1 \
+\cb4 striped hyena\cb1 \
+\cb4 weed whacker\cb1 \
+\cb4 backstabbing misfortune\cb1 \
+\cb4 bad striped hyena\cb1 \
+\cb4 beautiful elastic band\cb1 \
+\cb4 best failure\cb1 \
+\cb4 big-bellied bad mood\cb1 \
+\cb4 bitchy peace offering\cb1 \
+\cb4 bloody indignation\cb1 \
+\cb4 bone-chilling legal warrant\cb1 \
+\cb4 boring heartbreak\cb1 \
+\cb4 bottle-conditioned trainer\cb1 \
+\cb4 bottled sweet tailpipe\cb1 \
+\cb4 brainless ways of the world\cb1 \
+\cb4 brewery-fresh sleazeball\cb1 \
+\cb4 bright-eyed double fault\cb1 \
+\cb4 brokenhearted druggie\cb1 \
+\cb4 bull-headed lover\cb1 \
+\cb4 busty descending color\cb1 \
+\cb4 buxom personality\cb1 \
+\cb4 cask-conditioned freak\cb1 \
+\cb4 cat-friendly reading party\cb1 \
+\cb4 caught-in-the-act jackass\cb1 \
+\cb4 chauvinistic pup\cb1 \
+\cb4 cheap natural history\cb1 \
+\cb4 cheeky keepsake machete\cb1 \
+\cb4 cheerful toilet seat\cb1 \
+\cb4 chilled good-for-nothing\cb1 \
+\cb4 chunky drug addict\cb1 \
+\cb4 cocky matrimonial law\cb1 \
+\cb4 cold-hearted Eskimo\cb1 \
+\cb4 colored snuggle bug\cb1 \
+\cb4 colossal love of her life\cb1 \
+\cb4 comforting grouch\cb1 \
+\cb4 comic divergent thinking\cb1 \
+\cb4 common toilet seat\cb1 \
+\cb4 compassionate bad mood\cb1 \
+\cb4 complex guilt\cb1 \
+\cb4 confrontational freak\cb1 \
+\cb4 considerate louse\cb1 \
+\cb4 contemporary queen\cb1 \
+\cb4 content dirtbag\cb1 \
+\cb4 control-top light bulb\cb1 \
+\cb4 corrupt broken promises\cb1 \
+\cb4 craft-brewed police squad\cb1 \
+\cb4 crappy lack of morality\cb1 \
+\cb4 crate-trained mood\cb1 \
+\cb4 crawly mistake\cb1 \
+\cb4 crazed master\
+\
+surround\cb1 \
+\cb4 stab\cb1 \
+\cb4 return\cb1 \
+\cb4 medicate\cb1 \
+\cb4 blindside\cb1 \
+\cb4 boogie\cb1 \
+\cb4 flap\cb1 \
+\cb4 trip\cb1 \
+\cb4 swat\cb1 \
+\cb4 suck in\cb1 \
+\cb4 harass\cb1 \
+\cb4 trap\cb1 \
+\cb4 snoop\cb1 \
+\cb4 explode\cb1 \
+\cb4 sketch\cb1 \
+\cb4 scatter\cb1 \
+\cb4 challenge\cb1 \
+\cb4 fight\cb1 \
+\cb4 bury\cb1 \
+\cb4 splatter\cb1 \
+\cb4 smack\cb1 \
+\cb4 peddle\cb1 \
+\cb4 balance\cb1 \
+\cb4 trip up\cb1 \
+\cb4 boggle\cb1 \
+\cb4 poke\cb1 \
+\cb4 critique\cb1 \
+\cb4 fear\cb1 \
+\cb4 initiate\cb1 \
+\cb4 line up\cb1 \
+\cb4 run over\cb1 \
+\cb4 schedule\cb1 \
+\cb4 cook\cb1 \
+\cb4 imprison\cb1 \
+\cb4 underestimate\cb1 \
+\cb4 cajole\cb1 \
+\cb4 wheedle\cb1 \
+\cb4 soft soap\cb1 \
+\cb4 butter up\cb1 \
+\cb4 sweet-talk\cb1 \
+\cb4 prevail\cb1 \
+\cb4 shred\cb1 \
+\cb4 drink\cb1 \
+\cb4 dispute\cb1 \
+\cb4 echo\cb1 \
+\cb4 mimic\cb1 \
+\cb4 berate\cb1 \
+\cb4 castigate\cb1 \
+\cb4 underrate\cb1 \
+\cb4 taunt\
+dead\cb1 \
+\cb4 hairless\cb1 \
+\cb4 sadistic\cb1 \
+\cb4 metal\cb1 \
+\cb4 wild\cb1 \
+\cb4 domesticated\cb1 \
+\cb4 abnormal\cb1 \
+\cb4 medicated\cb1 \
+\cb4 cocky\cb1 \
+\cb4 massive\cb1 \
+\cb4 disrespectful\cb1 \
+\cb4 impressive\cb1 \
+\cb4 out of control\cb1 \
+\cb4 internet worthy\cb1 \
+\cb4 hilarious\cb1 \
+\cb4 sexy\cb1 \
+\cb4 hot\cb1 \
+\cb4 very tactful\cb1 \
+\cb4 bearded\cb1 \
+\cb4 duck-like\cb1 \
+\cb4 violent\cb1 \
+\cb4 slimy\cb1 \
+\cb4 insanely creepy\cb1 \
+\cb4 embarrassed to the bone\cb1 \
+\cb4 self-centered\cb1 \
+\cb4 talking\cb1 \
+\cb4 naked\cb1 \
+\cb4 angry\cb1 \
+\cb4 shaky\cb1 \
+\cb4 deep\cb1 \
+\cb4 sick\cb1 \
+\cb4 zippy\cb1 \
+\cb4 sticky\cb1 \
+\cb4 fluffy\cb1 \
+\cb4 frozen\cb1 \
+\cb4 unholy\cb1 \
+\cb4 painfully honest\cb1 \
+\cb4 filthy\cb1 \
+\cb4 fighting\cb1 \
+\cb4 bonkers\cb1 \
+\cb4 harsh\cb1 \
+\cb4 frisky\cb1 \
+\cb4 greedy\cb1 \
+\cb4 crawly\cb1 \
+\cb4 insane\cb1 \
+\cb4 hideous\cb1 \
+\cb4 ungodly\cb1 \
+\cb4 abusive\cb1 \
+\cb4 drunken\cb1 \
+\cb4 hateful\cb1 \
+\cb4 idiotic\cb1 \
+\cb4 twisted\cb1 \
+\cb4 useless\cb1 \
+\cb4 yapping\cb1 \
+\cb4 magical\cb1 \
+\cb4 indecent\cb1 \
+\cb4 godawful\cb1 \
+\cb4 arrogant\cb1 \
+\cb4 confused\cb1 \
+\cb4 flirting\cb1 \
+\cb4 high-end\cb1 \
+\cb4 insecure\cb1 \
+\cb4 maniacal\cb1 \
+\cb4 sickened\cb1 \
+\cb4 slippery\cb1 \
+\cb4 stubborn\cb1 \
+\cb4 tripping\cb1 \
+\cb4 vengeful\cb1 \
+\cb4 sinister\cb1 \
+\cb4 costumed\cb1 \
+\cb4 cowardly\cb1 \
+\cb4 haunting\cb1 \
+\cb4 startled\cb1 \
+\cb4 alcoholic\cb1 \
+\cb4 demanding\cb1 \
+\cb4 shivering\cb1 \
+\cb4 offensive\cb1 \
+\cb4 nighttime\cb1 \
+\cb4 startling\cb1 \
+\cb4 disgusting\cb1 \
+\cb4 slap happy\cb1 \
+\cb4 disturbing\cb1 \
+\cb4 adulterous\cb1 \
+\cb4 blathering\cb1 \
+\cb4 flickering\cb1 \
+\cb4 rebellious\cb1 \
+\cb4 impertinent\cb1 \
+\cb4 bull headed\cb1 \
+\cb4 hyperactive\cb1 \
+\cb4 infuriating\cb1 \
+\cb4 outnumbered\cb1 \
+\cb4 pea-brained\cb1 \
+\cb4 territorial\cb1 \
+\cb4 underhanded\cb1 \
+\cb4 zombie like\cb1 \
+\cb4 mischievous\cb1 \
+\cb4 at-the-ready\cb1 \
+\cb4 free-loading\cb1 \
+\cb4 house-broken\cb1 \
+\cb4 up-to-no-good\cb1 \
+\cb4 cruel-hearted\cb1 \
+\cb4 misunderstood\cb1 \
+\cb4 narrow-minded\cb1 \
+\cb4 self-absorbed\cb1 \
+\cb4 fiercely-loyal\cb1 \
+\cb4 out-of-control\cb1 \
+\cb4 fear-inspiring\cb1 \
+\cb4 mentally impaired}
