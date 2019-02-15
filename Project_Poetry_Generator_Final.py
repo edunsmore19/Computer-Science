@@ -27,7 +27,7 @@ for x in range(len(tokenizedPoetry) - 2):
 
 ## Randomly generate the number of lines in this poem
 global numLines
-numLines = random.randint(1, 11)
+numLines = random.randint(3, 11)
 global numLinesCounter
 numLinesCounter = 0
 
@@ -79,6 +79,3 @@ def cleanText():
 
 ## Begin generating poetry & redirect to 'cfdPoetryGeneration'
 cfdPoetryGeneration()
-
-
-
