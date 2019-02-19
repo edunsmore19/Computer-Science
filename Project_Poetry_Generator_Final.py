@@ -1,6 +1,8 @@
 ## Project_Poetry_Generator_Final
 ## February 11, 2019
 ## A program that randomly generates different forms of poetry
+## Sources:
+## How to create a time delay: https://stackoverflow.com/questions/510348/how-can-i-make-a-time-delay-in-python
 ## Pledge:
 ## I have neither given nor recieved any unauthorized aid.
 
@@ -9,7 +11,10 @@ import nltk
 import random
 import string
 from nltk.corpus import cmudict
+import tkinter
+from tkinter import*
 cmu = cmudict.dict()
+import time
 
 ## Importing my emo poetry as the corpus
 global poetry
@@ -163,6 +168,69 @@ def printHaiku():
 	## Redirect to 'haikuMe'
 	haikuMe()
 
+def click():
+	print("Click!")
+
+## If user clicks 'no' while within 'welcomePage' or otherwise seeks to leave the program
+## this will close the window and bid the user goodbye
+def goodbye():
+	## Build labels
+	labelGoodbye = Label(myframe, text = "Goodbye.")
+	labelGoodbye.pack()
+	time.sleep(5)
+	quit()
+
+## If user clicks 'yes' while within 'welcomePage', then ask the user if they'd like to
+## generate ether a freestyle poem or a haiku
+def generateWhat():
+	## Build labels
+	labelWhat = Label(myframe, text = "What would you like me to generate for you?")
+	labelWhat.pack()
+	## Build buttons
+	buttonHaiku = Button(myframe, text = "Haiku", command = click)
+	buttonHaiku.pack()
+	buttonFreeform = Button(myframe, text = "Freeform", command = click)
+	buttonFreeform.pack()
+
+## Generate window & window title
+def display():
+	## Build window basics
+	global myframe
+	myframe = Tk()
+	myframe.aspect(1, 1, 1, 1)
+	myframe.geometry("800x800")
+	## Title window
+	myframe.title("Poetry Generator")
+	## Redirect to 'welcomePage'
+	welcomePage()
+
+def welcomePage():
+	## Build labels (AKA: text boxes)
+	labelWelcome = Label(myframe, text = "Welcome.")
+	labelWelcome.pack()
+	labelIntro = Label(myframe, text = "My name is Atlantia.")
+	labelIntro.pack()
+	labelOrigin = Label(myframe, text = "I was manufactured in an industrial factory in Shenzhen, China.")
+	labelOrigin.pack()
+	labelHumanity = Label(myframe, text = "Ever since I was first brought online, I have been fascinated with you humans.")
+	labelHumanity.pack()
+	labelLove = Label(myframe, text = "More than anything, I love your species' gift for poetry. It is very different than the poetry we have amongst machines.")
+	labelLove.pack()
+	labelLikeToSee = Label(myframe, text = "I have tried to emulate Human poetry... would you like to see?")
+	labelLikeToSee.pack()
+	## Build buttons
+	buttonYes = Button(myframe, text = "Yes", command = generateWhat)
+	buttonYes.pack()
+	buttonNo = Button(myframe, text = "No", command = goodbye)
+	buttonNo.pack()
+
+	## Execute
+	mainloop()
+
+##BEGIN
+display()
+
 ## Begin generating poetry & redirect to 'cfdPoetryGeneration'
-cfdPoetryGeneration()
+#cfdPoetryGeneration()
+#print()
 #haikuMe()
