@@ -25,6 +25,13 @@ def corpusFreeform():
 	#poetry = open("Eilidh's Work 17, 18, 19.txt")
 	global poemType
 	poemType = "f"
+	## Build window
+	global freeformWindow
+	freeformWindow = Tk()
+	freeformWindow.aspect(1, 2, 1, 1)
+	freeformWindow.geometry("700x700")
+	## Title window
+	freeformWindow.title("Generated Freeform")
 	## Redirect to 'gruntWork'
 	gruntWork()
 
@@ -88,7 +95,7 @@ def cfdPoetryGeneration():
 	generatedWords = []
 	## Randomly generate the number of words per line (between 1 & 20)
 	global g
-	g = random.randint(1, 21)
+	g = random.randint(1, 19)
 	for x in range(0, g):
 		generatedWords.append(randomWord)
 		if (randomWord in cfd):
@@ -117,6 +124,9 @@ def cleanText():
 	for x in range(len(generatedWordsCleaned)):
 		if (generatedWordsCleaned[x] == "i"):
 			generatedWordsCleaned[x] = "I"
+	## Make label for freeform lines
+	labelFreeformLine = Label(freeformWindow, text = generatedWordsCleaned)
+	labelFreeformLine.pack()
 	print(*generatedWordsCleaned)
 	## Now that text has been cleaned, send back to 'cfdPoetryGeneration' & add a line
 	## to the counter
@@ -125,6 +135,11 @@ def cleanText():
 	## Redirect to 'cfdPoetryGeneration' if the poem is not complete
 	if (numLinesCounter != numLines):
 		cfdPoetryGeneration()
+	## If the poem is complete, query the user if they would like to generate another
+	elif (numLinesCounter == numLines):
+	## Build button
+		buttonGenerateAnother = Button(freeformWindow, text = "Generate another?", command = corpusFreeform)
+		buttonGenerateAnother.pack()
 
 ## This rhyming component will count syllables
 def countSyllables(word):
@@ -142,7 +157,6 @@ def haikuMe():
 	global line
 	global syllableCount
 	syllableCount = countSyllables(randomWord)
-	#print("syllableCount", syllableCount)
 	## If 'syllableCount' is a number & not a space, wrap as an 'int'
 	if (syllableCount == 1) or (syllableCount == 2) or (syllableCount == 3) or (syllableCount == 4) or (syllableCount == 5) or (syllableCount == 6) or (syllableCount == 7):
 		syllableCount = int(syllableCount)
