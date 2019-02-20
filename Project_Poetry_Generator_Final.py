@@ -14,41 +14,75 @@ from nltk.corpus import cmudict
 import tkinter
 from tkinter import*
 cmu = cmudict.dict()
-import time
-
-## Importing my emo poetry as the corpus
-global poetry
-poetry = open("Eilidh's Work 17, 18, 19.txt")
-#poetry = open("Haiku Text.txt")
-
-## Tokenize 
 from nltk.tokenize import word_tokenize as word
-tokenizedPoetry = word(poetry.read())
-
-## Create bigrams
-bigrams = [x for x in zip(tokenizedPoetry[:-1], tokenizedPoetry[1:])]
-
-## Using bigrams, filter the corpus through conditional frequency distribution
 from collections import defaultdict
-cfd = defaultdict(lambda: defaultdict(lambda: 0))
-for x in range(len(tokenizedPoetry) - 2):
-	cfd[tokenizedPoetry[x].lower()][tokenizedPoetry[x+1].lower()]+= 1
 
-## Randomly generate the number of lines in this poem
-global numLines
-numLines = random.randint(3, 11)
-global numLinesCounter
-numLinesCounter = 0
-global line
-line = 0
-global haikuWords
-haikuWords = []
-global haikuLineNum
-haikuLineNum = 0
+## Selecting the corpus for freeform poetry
+def corpusFreeform():
+	## Importing my emo poetry as the corpus
+	global poetry
+	poetry = open("Planet Nitria.txt")
+	#poetry = open("Eilidh's Work 17, 18, 19.txt")
+	global poemType
+	poemType = "f"
+	## Redirect to 'gruntWork'
+	gruntWork()
+
+## Selecting the corpus for haiku poetry
+def corpusHaiku():
+	global poetry
+	poetry = open("Haiku Text.txt")
+	global poemType
+	poemType = "h"
+	## Build window
+	global haikuWindow
+	haikuWindow = Tk()
+	haikuWindow.aspect(1, 1, 1, 1)
+	haikuWindow.geometry("400x400")
+	## Title window
+	haikuWindow.title("Generated Haiku")
+	## Redirect to 'gruntWork'
+	gruntWork()
+
+## Tokenizes, creates bigrams for, and creates a cfd for the poem while also asserting
+## variables
+def gruntWork():
+	## Tokenize 
+	global tokenizedPoetry
+	tokenizedPoetry = word(poetry.read())
+	## Create bigrams
+	bigrams = [x for x in zip(tokenizedPoetry[:-1], tokenizedPoetry[1:])]
+	## Using bigrams, filter the corpus through conditional frequency distribution
+	global cfd
+	cfd = defaultdict(lambda: defaultdict(lambda: 0))
+	for x in range(len(tokenizedPoetry) - 2):
+		cfd[tokenizedPoetry[x].lower()][tokenizedPoetry[x+1].lower()]+= 1
+	## Randomly generate the number of lines in this poem
+	global numLines
+	numLines = random.randint(3, 11)
+	global numLinesCounter
+	numLinesCounter = 0
+	global line
+	line = 0
+	global haikuWords
+	haikuWords = []
+	global haikuLineNum
+	haikuLineNum = 0
+	## If the poem is freeform, send to 'cfdPoetryGeneration'
+	if (poemType == "f"):
+		print("This is freeform. Sending to cfdPoetryGeneration...")
+		## Redirect to 'cfdPoetryGeneration'
+		cfdPoetryGeneration()
+	## If the poem is a haiku, send to 'haikuMe'
+	else:
+		print("This is a haiku. Sending to haikuMe...")
+		## Redirect to 'haikuMe'
+		haikuMe()
 
 ## This will generate poems based on cfd
 def cfdPoetryGeneration():
 	## From this, generate random text w/ a seed word
+	global tokenizedPoetry
 	randomWord = random.choice(tokenizedPoetry)
 	global generatedWords
 	generatedWords = []
@@ -102,6 +136,7 @@ def countSyllables(word):
 ## This will generate haikus
 def haikuMe():
 	## Generate a random seed word
+	global tokenizedPoetry
 	randomWord = random.choice(tokenizedPoetry)
 	global haikuWords
 	global line
@@ -153,12 +188,22 @@ def haikuMe():
 			line = 0
 			## Redirect to 'printHaiku'
 			printHaiku()
-	else:
-		exit()
+	## If 'haikuLineNum' is greater than two, ask the user if they want to generate
+	## a new haiku
+	elif (haikuLineNum == 3):
+		## Build button
+		print(haikuLineNum)
+		buttonGenerateAnother = Button(haikuWindow, text = "Generate another?", command = corpusHaiku)
+		buttonGenerateAnother.pack()
+		## Redirect to 'printHaiku'
+		printHaiku()
 
 ## This will print the haiku
 def printHaiku():
+	## Build labels
 	global haikuWords
+	labelHaikuLine = Label(haikuWindow, text = haikuWords)
+	labelHaikuLine.pack()
 	print(*haikuWords)
 	## Empty 'haikuWords' list
 	haikuWords = []
@@ -168,16 +213,18 @@ def printHaiku():
 	## Redirect to 'haikuMe'
 	haikuMe()
 
-def click():
-	print("Click!")
-
 ## If user clicks 'no' while within 'welcomePage' or otherwise seeks to leave the program
 ## this will close the window and bid the user goodbye
 def goodbye():
 	## Build labels
-	labelGoodbye = Label(myframe, text = "Goodbye.")
+	labelGoodbye = Label(myframe, text = "Well then... goodbye.")
 	labelGoodbye.pack()
-	time.sleep(5)
+	## Build buttons
+	buttonExit = Button(myframe, text = "Goodbye", command = exit)
+	buttonExit.pack()
+
+## Exits window & quits program
+def exit():
 	quit()
 
 ## If user clicks 'yes' while within 'welcomePage', then ask the user if they'd like to
@@ -187,10 +234,12 @@ def generateWhat():
 	labelWhat = Label(myframe, text = "What would you like me to generate for you?")
 	labelWhat.pack()
 	## Build buttons
-	buttonHaiku = Button(myframe, text = "Haiku", command = click)
+	buttonHaiku = Button(myframe, text = "Haiku", command = corpusHaiku)
 	buttonHaiku.pack()
-	buttonFreeform = Button(myframe, text = "Freeform", command = click)
+	buttonFreeform = Button(myframe, text = "Freeform", command = corpusFreeform)
 	buttonFreeform.pack()
+	buttonNeverMind = Button(myframe, text = "Never mind", command = goodbye)
+	buttonNeverMind.pack()
 
 ## Generate window & window title
 def display():
