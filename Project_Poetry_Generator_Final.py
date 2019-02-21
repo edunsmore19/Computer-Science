@@ -262,6 +262,7 @@ def display():
 	myframe = Tk()
 	myframe.aspect(1, 1, 1, 1)
 	myframe.geometry("800x800")
+	myframe.configure(background = "black")
 	## Title window
 	myframe.title("Poetry Generator")
 	## Redirect to 'welcomePage'
@@ -269,9 +270,10 @@ def display():
 
 def welcomePage():
 	## Build labels (AKA: text boxes)
-	labelWelcome = Label(myframe, text = "Welcome.")
-	labelWelcome.pack()
-	labelIntro = Label(myframe, text = "My name is Atlantia.")
+	labelWelcome = Label(myframe, text = "Welcome.", font = ("Larabiefont", 18), background = "black", fg = "#1FF018")
+	labelWelcome.place(x = 0, y = 0)
+	#labelWelcome.pack()
+	labelIntro = Label(myframe, text = "\nMy name is Atlantia.", font = ("Larabiefont", 18), background = "black", fg = "#1FF018")
 	labelIntro.pack()
 	labelOrigin = Label(myframe, text = "I was manufactured in an industrial factory in Shenzhen, China.")
 	labelOrigin.pack()
@@ -292,8 +294,3 @@ def welcomePage():
 
 ##BEGIN
 display()
-
-## Begin generating poetry & redirect to 'cfdPoetryGeneration'
-#cfdPoetryGeneration()
-#print()
-#haikuMe()
