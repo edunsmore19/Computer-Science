@@ -22,7 +22,8 @@ import time
 def corpusFreeform():
 	## Importing my emo poetry as the corpus
 	global poetry
-	poetry = open("Planet Nitria.txt")
+	poetry = open("meep.txt")
+	#poetry = open("Planet Nitria.txt")
 	#poetry = open("Eilidh's Work 17, 18, 19.txt")
 	global poemType
 	poemType = "f"
@@ -122,7 +123,8 @@ def cleanText():
 		if x not in punctuationList:
 			generatedWordsCleaned.append(x)
 	## Capitalize the first word
-	generatedWordsCleaned[0] = generatedWordsCleaned[0].capitalize()
+	if (len(generatedWordsCleaned) >= 1):
+		generatedWordsCleaned[0] = generatedWordsCleaned[0].capitalize()
 	## Capitalize 'i'
 	for x in range(len(generatedWordsCleaned)):
 		if (generatedWordsCleaned[x] == "i"):
