@@ -22,8 +22,7 @@ import time
 def corpusFreeform():
 	## Importing my emo poetry as the corpus
 	global poetry
-	poetry = open("meep.txt")
-	#poetry = open("Planet Nitria.txt")
+	poetry = open("Planet Nitria.txt")
 	#poetry = open("Eilidh's Work 17, 18, 19.txt")
 	global poemType
 	poemType = "f"
